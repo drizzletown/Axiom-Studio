@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "schema": "ax-p2h-demo/0.1",
+  "first": {
+    "outcome": "Tested",
+    "executed_targets": 3,
+    "cache_hits": 0,
+    "elapsed_seconds": 10.04496
+  },
+  "changed_format": {
+    "gate_before": "Blocked",
+    "outcome": "Tested",
+    "executed": 2,
+    "reused": 1,
+    "elapsed_seconds": 7.229071,
+    "target_reused": {
+      "ledger": true,
+      "format": false,
+      "integration": false
+    }
+  },
+  "injected_wrong_receipt": {
+    "outcome": "Violated",
+    "gate": "Blocked",
+    "failed_targets": [
+      "format",
+      "integration"
+    ]
+  },
+  "release_authorized": false,
+  "limits": "source+transitive-header-bound local test cache, not C++ proof; integration always re-executed; sandbox is research-only"
+}

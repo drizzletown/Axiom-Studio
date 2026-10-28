@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "axiom-prototype"
+version = "1.0.0"
+description = "Axiom P0-P2f finite models, C++ tests, typed evidence dependency and integrity audit"
+requires-python = ">=3.10"
+dependencies = ["lark>=1.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "cryptography>=43"]
+attest = ["cryptography>=43"]
+
+[project.scripts]
+ax = "axiom.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,9 @@
+{
+  "mode": "bad",
+  "state": "blocked",
+  "elapsed_s": 16.23,
+  "job": "job-da99d107a348dd3c",
+  "attempts": 1,
+  "event_chain_len": 6,
+  "assurance": "review-gated prototype; no production approval"
+}

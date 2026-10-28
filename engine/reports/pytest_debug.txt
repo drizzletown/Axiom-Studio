@@ -1,0 +1,74 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.5', 'Platform': 'Linux-6.18.55-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.13.0', 'ddtrace': '4.4.0', 'Faker': '40.1.2', 'asyncio': '1.3.0', 'cov': '7.0.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'PLATFORM': 'linux/amd64', 'CI': 'true'}
+rootdir: /mnt/data/axiom-p2f
+configfile: pyproject.toml
+plugins: anyio-4.13.0, ddtrace-4.4.0, Faker-40.1.2, asyncio-1.3.0, cov-7.0.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 146 items
+
+tests/test_attestation_p2d.py::test_valid_signature_and_signer PASSED    [  0%]
+tests/test_attestation_p2d.py::test_modified_payload_or_signature_rejected PASSED [  1%]
+tests/test_attestation_p2d.py::test_wrong_public_key_rejected PASSED     [  2%]
+tests/test_attestation_p2d.py::test_stale_model_or_manifest_rejected PASSED [  2%]
+tests/test_attestation_p2d.py::test_private_key_in_workspace_rejected PASSED [  3%]
+tests/test_attestation_p2d.py::test_signing_blocked_without_verification PASSED [  4%]
+tests/test_attestation_p2d.py::test_local_replay_prevents_synthesized_success_record PASSED [  4%]
+tests/test_attestation_p2d.py::test_signer_does_not_store_private_key_or_attestation_in_workspace PASSED [  5%]
+tests/test_audit_p2b.py::test_audit_clean PASSED                         [  6%]
+tests/test_audit_p2b.py::test_audit_detects_object_tampering PASSED      [  6%]
+tests/test_audit_p2b.py::test_audit_detects_malformed_db_reference PASSED [  7%]
+tests/test_audit_p2b.py::test_audit_detects_missing_object PASSED        [  8%]
+tests/test_audit_p2b.py::test_audit_unknown_result_remains_consistent PASSED [  8%]
+tests/test_audit_p2b.py::test_audit_cpp_binary_integrity PASSED          [  9%]
+tests/test_audit_p2b.py::test_content_digest_path_rejects_path_traversal PASSED [ 10%]
+tests/test_audit_p2b.py::test_cannot_store_fabricated_bounded_report PASSED [ 10%]
+tests/test_audit_p2b.py::test_audit_detects_forged_gate_index PASSED     [ 11%]
+tests/test_audit_p2b.py::test_audit_detects_false_current_assessment PASSED [ 12%]
+tests/test_composition_p2b.py::test_compose_unverified_is_blocked PASSED [ 13%]
+tests/test_composition_p2b.py::test_compose_ready_only_after_independent_evidence PASSED [ 13%]
+tests/test_composition_p2b.py::test_missing_guarantee_blocks PASSED      [ 14%]
+tests/test_composition_p2b.py::test_cyclic_assumptions_block PASSED      [ 15%]
+tests/test_composition_p2b.py::test_self_dependency_block PASSED         [ 15%]
+tests/test_composition_p2b.py::test_duplicate_dependency_block PASSED    [ 16%]
+tests/test_composition_p2b.py::test_duplicate_component_block PASSED     [ 17%]
+tests/test_composition_p2b.py::test_unexpected_manifest_field_block PASSED [ 17%]
+tests/test_composition_p2b.py::test_symlink_or_path_escape_block PASSED  [ 18%]
+tests/test_composition_p2b.py::test_changed_guarantee_invalidates_provider_only PASSED [ 19%]
+tests/test_composition_p2b.py::test_changed_action_invalidates_all_provider_obligations PASSED [ 19%]
+tests/test_composition_p2b.py::test_unmodified_provider_evidence_reused_after_unrelated_property PASSED [ 20%]
+tests/test_composition_p2b.py::test_changed_model_finite_domain_requires_fresh_verification PASSED [ 21%]
+tests/test_composition_p2b.py::test_manifest_digest_binds_spec_digest PASSED [ 21%]
+tests/test_composition_p2b.py::test_local_symlink_manifest_path_block PASSED [ 22%]
+tests/test_cpp_history_p2f.py::test_trials_count_and_scope PASSED        [ 23%]
+tests/test_cpp_history_p2f.py::test_parser_accepts_observed_out_of_order_completion PASSED [ 23%]
+tests/test_cpp_history_p2f.py::test_parser_rejects_spoofed_operations PASSED [ 24%]
+tests/test_cpp_history_p2f.py::test_linearizable_respects_completed_real_time_order PASSED [ 25%]
+tests/test_cpp_history_p2f.py::test_linearizable_checks_final_quiescent_observation PASSED [ 26%]
+tests/test_cpp_history_p2f.py::test_linearizable_never_extrapolates_search_budget PASSED [ 26%]
+tests/test_cpp_history_p2f.py::test_correct_native_thread_history PASSED [ 27%]
+tests/test_cpp_history_p2f.py::test_one_sided_update_rejected PASSED     [ 28%]
+tests/test_cpp_history_p2f.py::test_concurrency_specific_bug_rejected FAILED [ 28%]
+
+=================================== FAILURES ===================================
+____________________ test_concurrency_specific_bug_rejected ____________________
+
+native_results = {'broken_one_side': {'counterexample': {'history': {'final': (1, 0), 'ops': [{'desired': 0, 'finish': 1, 'opcode': 0, ...dd77ea2e2c52e9a597ec296ee', 'Source': 'sha256:c5b91405c346bf0297effde91340659ab296348eec641d9411309037abb09a49'}, ...}}
+
+    def test_concurrency_specific_bug_rejected(native_results):
+        report=native_results['broken_overlap']
+>       assert report['outcome']=='Violated'
+E       AssertionError: assert 'Tested' == 'Violated'
+E         
+E         - Violated
+E         + Tested
+
+tests/test_cpp_history_p2f.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_cpp_history_p2f.py::test_concurrency_specific_bug_rejected - AssertionError: assert 'Tested' == 'Violated'
+  
+  - Violated
+  + Tested
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+======================== 1 failed, 41 passed in 11.79s =========================

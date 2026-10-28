@@ -1,0 +1,45 @@
+{
+  "assessment_digest": "sha256:2925fc7f8f331d49c71024835b6e518c7263c8ffe6e3fb104979572f01211074",
+  "components": {
+    "Toggle": {
+      "assurance": "Bounded",
+      "covered_by_run": {
+        "Toggle/model/action/set/cases": "run-e745b038c22741c1a989",
+        "Toggle/model/action/set/transition_total": "run-e745b038c22741c1a989",
+        "Toggle/model/action/set/type_frame": "run-e745b038c22741c1a989",
+        "Toggle/model/property/StableType": "run-e745b038c22741c1a989"
+      },
+      "local_gate_decision": "Approved",
+      "missing_obligations": [],
+      "model_digest": "sha256:11f8f16f039d64fe7d556888f565b39f9cb8786a31e231cde88591ad2c591822",
+      "required_obligation_count": 4
+    },
+    "TwoAccount": {
+      "assurance": "Bounded",
+      "covered_by_run": {
+        "TwoAccount/model/action/move/cases": "run-a2d3b654df86460abd7c",
+        "TwoAccount/model/action/move/transition_total": "run-a2d3b654df86460abd7c",
+        "TwoAccount/model/action/move/type_frame": "run-a2d3b654df86460abd7c",
+        "TwoAccount/model/property/Conservation": "run-a2d3b654df86460abd7c",
+        "TwoAccount/model/property/NonNegative": "run-a2d3b654df86460abd7c"
+      },
+      "local_gate_decision": "Approved",
+      "missing_obligations": [],
+      "model_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+      "required_obligation_count": 5
+    }
+  },
+  "decision": "Ready",
+  "dependencies": [
+    {
+      "consumer": "Toggle",
+      "property": "Conservation",
+      "provider": "TwoAccount"
+    }
+  ],
+  "manifest_digest": "sha256:33b145321be9a5c2000715b4b52a67335e6ad5673f9f9ce5b1cfea2f7bf7f257",
+  "reasons": [],
+  "schema": "ax-composition-assessment/0.1",
+  "scope": "Independent finite abstract model checks and declared acyclic evidence dependencies only; no assume-guarantee proof, no cross-component runtime behavior, no C++ refinement, no sandbox and no production release",
+  "target": "abstract-model-evidence-integration-readiness"
+}

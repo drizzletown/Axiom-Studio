@@ -1,0 +1,122 @@
+{
+  "schema": "ax-p2f-acceptance-demo/0.1",
+  "engineering_version": "0.8.0",
+  "abstract_model_evidence": "recorded once, retained across source-only revisions",
+  "gates": {
+    "before_model_evidence": "Blocked",
+    "abstract_only": "Blocked",
+    "correct_source": "Approved",
+    "source_change_before_retest": "Blocked",
+    "source_change_after_retest": "Approved",
+    "one_sided_bug": "Blocked",
+    "overlap_bug": "Blocked"
+  },
+  "cases": {
+    "correct": "Tested",
+    "comment_only_revision": "Tested",
+    "one_sided_bug": "Violated",
+    "overlap_bug": "Violated"
+  },
+  "trials_per_compiled_mode": 24,
+  "total_operations_per_mode": 80,
+  "counterexample_one_sided": {
+    "mode": "normal",
+    "trial": 1,
+    "requested": [
+      [
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    "history": {
+      "ops": [
+        {
+          "worker": 0,
+          "slot": 0,
+          "opcode": 0,
+          "desired": 0,
+          "start": 0,
+          "finish": 1,
+          "result": 1
+        },
+        {
+          "worker": 1,
+          "slot": 0,
+          "opcode": 0,
+          "desired": 1,
+          "start": 2,
+          "finish": 3,
+          "result": 1
+        }
+      ],
+      "final": [
+        1,
+        0
+      ]
+    },
+    "note": "no total order respecting real-time and Axiom API behavior"
+  },
+  "counterexample_overlap": {
+    "mode": "normal",
+    "trial": 0,
+    "requested": [
+      [
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ]
+      ]
+    ],
+    "history": {
+      "ops": [
+        {
+          "worker": 0,
+          "slot": 0,
+          "opcode": 0,
+          "desired": 1,
+          "start": 1,
+          "finish": 2,
+          "result": 1
+        },
+        {
+          "worker": 1,
+          "slot": 0,
+          "opcode": 0,
+          "desired": 0,
+          "start": 0,
+          "finish": 3,
+          "result": 1
+        }
+      ],
+      "final": [
+        0,
+        1
+      ]
+    },
+    "note": "no total order respecting real-time and Axiom API behavior"
+  },
+  "local_audit": "Consistent",
+  "local_audit_history_records": 4,
+  "limitations": [
+    "native thread scheduling observed, not exhaustively controlled",
+    "not a proof of C++ memory model behavior",
+    "no TSAN check",
+    "evidence locally auditable but not externally authenticated",
+    "namespace sandbox experimental",
+    "no production release"
+  ]
+}

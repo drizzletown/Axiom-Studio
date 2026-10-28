@@ -1,0 +1,9 @@
+{
+  "schema": "ax-p2g-regression/0.1",
+  "engineering_version": "0.9.0",
+  "test_command": "PYTHONPATH=src python -m pytest -q --disable-warnings",
+  "passed": 151,
+  "failed": 0,
+  "duration_seconds": 67.87,
+  "notes": "All tests executed in the active Linux container; real TSAN executions are covered by 5 new P2g tests. Local testing only; not a production safety certification."
+}

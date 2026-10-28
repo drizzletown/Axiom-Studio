@@ -1,0 +1,18 @@
+model BrokenLedger {
+  type Amount = Int[0..3]
+  state { a: Amount b: Amount }
+  init { a == 3 && b == 0 }
+  action move(m: Amount) -> Bool {
+    case m > 0 && m <= a && b + m <= 3 {
+      modifies { a, b }
+      // Bug: money appears in destination but is not subtracted from source.
+      ensures a' == a && b' == b + m && result == true
+    }
+    case otherwise {
+      modifies { }
+      ensures result == false
+    }
+  }
+  property Conservation { always a + b == 3 }
+  observe { move.input, move.output }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "ax-cpp-project/0.1",
+  "spec": "ledger.ax",
+  "files": ["ledger.hpp", "ledger.cpp", "format.hpp", "format.cpp", "test_ledger.cpp", "test_format.cpp", "test_integration.cpp"],
+  "tests": [
+    {"id":"ledger", "files":["ledger.hpp", "ledger.cpp", "test_ledger.cpp"], "sources":["ledger.cpp", "test_ledger.cpp"], "expect":"PASS ledger\n"},
+    {"id":"format", "files":["format.hpp", "format.cpp", "test_format.cpp"], "sources":["format.cpp", "test_format.cpp"], "expect":"PASS format\n"},
+    {"id":"integration", "files":["ledger.hpp", "ledger.cpp", "format.hpp", "format.cpp", "test_integration.cpp"], "sources":["ledger.cpp", "format.cpp", "test_integration.cpp"], "expect":"PASS integration\n"}
+  ],
+  "integration": "integration"
+}

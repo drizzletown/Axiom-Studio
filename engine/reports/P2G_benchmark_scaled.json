@@ -1,0 +1,82 @@
+{
+  "schema": "ax-p2g-model-benchmark/0.1",
+  "experimental": true,
+  "measurement": "9 repeats per path, median wall-clock, impact computation included in incremental",
+  "model": "ScaledBench",
+  "state_bits": 9,
+  "reachable_states": 512,
+  "version_changes": "add-only safety invariants; transition core unchanged",
+  "revisions": 8,
+  "model_property_positions_reused": 36,
+  "model_property_positions_newly_checked": 8,
+  "full_total_median_ms": 103.944,
+  "incremental_total_median_ms": 50.742,
+  "ratio_full_over_incremental": 2.048,
+  "conclusion_scope": "microbenchmark only, not C++ test speedup nor general verification acceleration",
+  "data": [
+    {
+      "revision": 1,
+      "properties_total": 2,
+      "properties_reused": 1,
+      "properties_rechecked": 1,
+      "full_median_ms": 7.187,
+      "incremental_median_ms": 5.964
+    },
+    {
+      "revision": 2,
+      "properties_total": 3,
+      "properties_reused": 2,
+      "properties_rechecked": 1,
+      "full_median_ms": 8.827,
+      "incremental_median_ms": 6.018
+    },
+    {
+      "revision": 3,
+      "properties_total": 4,
+      "properties_reused": 3,
+      "properties_rechecked": 1,
+      "full_median_ms": 10.49,
+      "incremental_median_ms": 6.247
+    },
+    {
+      "revision": 4,
+      "properties_total": 5,
+      "properties_reused": 4,
+      "properties_rechecked": 1,
+      "full_median_ms": 12.598,
+      "incremental_median_ms": 6.337
+    },
+    {
+      "revision": 5,
+      "properties_total": 6,
+      "properties_reused": 5,
+      "properties_rechecked": 1,
+      "full_median_ms": 14.067,
+      "incremental_median_ms": 6.506
+    },
+    {
+      "revision": 6,
+      "properties_total": 7,
+      "properties_reused": 6,
+      "properties_rechecked": 1,
+      "full_median_ms": 15.09,
+      "incremental_median_ms": 6.428
+    },
+    {
+      "revision": 7,
+      "properties_total": 8,
+      "properties_reused": 7,
+      "properties_rechecked": 1,
+      "full_median_ms": 17.095,
+      "incremental_median_ms": 6.507
+    },
+    {
+      "revision": 8,
+      "properties_total": 9,
+      "properties_reused": 8,
+      "properties_rechecked": 1,
+      "full_median_ms": 18.591,
+      "incremental_median_ms": 6.733
+    }
+  ]
+}

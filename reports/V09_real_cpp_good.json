@@ -1,0 +1,8 @@
+{
+  "state": "passed",
+  "elapsed_s": 21.66,
+  "job": "job-3f45dea39a603faf",
+  "attempts": 1,
+  "event_chain_len": 6,
+  "assurance": "review-gated prototype; no production approval"
+}

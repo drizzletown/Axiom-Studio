@@ -1,0 +1,13 @@
+model Toggle {
+  type Flag = Bool
+  state { enabled: Flag }
+  init { enabled == false }
+  action set(desired: Flag) -> Bool {
+    case true {
+      modifies { enabled }
+      ensures enabled' == desired && result == true
+    }
+  }
+  property StableType { always enabled == true || enabled == false }
+  observe { set.input, set.output }
+}

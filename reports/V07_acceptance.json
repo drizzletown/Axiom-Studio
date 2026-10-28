@@ -1,0 +1,41 @@
+{
+  "version": "0.7.0",
+  "date": "2026-10-28",
+  "verified": {
+    "launchpad_tests": {
+      "passed": 13,
+      "total": 13
+    },
+    "orchestrator_legacy_focus": {
+      "passed": 9,
+      "total": 9
+    },
+    "production_contract_legacy_focus": {
+      "passed": 12,
+      "total": 12
+    },
+    "javascript_syntax": [
+      "projects.js",
+      "launchpad.js"
+    ],
+    "model_smoke": "real Axiom check + bounded verify + Gate invoked in test_real_model_evidence_and_workflow",
+    "http_smoke": "token authorization, create, queue, export tested in test_http_authorization_and_launch",
+    "cli_smoke": "scripts/production_cli.py templates",
+    "cpp_project_smoke": {
+      "executed_targets": 3,
+      "passed_targets": 3,
+      "full_build": true,
+      "outcome": "Tested",
+      "cpp_gate": "Approved",
+      "release_authorized": false,
+      "context": "trusted source, freshly created from template after clean extraction"
+    }
+  },
+  "not_claimed": [
+    "Unified complete regression; combined legacy suite timed out",
+    "Browser-level screenshot smoke was blocked by container browser security policy",
+    "Production-grade untrusted code sandbox",
+    "Formal refinement proof, autonomous multi-agent system or release authorization"
+  ],
+  "assurance": "local test-only prototype"
+}

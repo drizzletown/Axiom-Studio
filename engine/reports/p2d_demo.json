@@ -1,0 +1,39 @@
+{
+  "version": "0.6.0",
+  "baseline": "Axiom 0.2 frozen; HLD V1.0 unchanged",
+  "safe": {
+    "outcome": "Bounded",
+    "states": 2,
+    "steps_checked": 48
+  },
+  "broken": {
+    "outcome": "Violated",
+    "reason": "E_INTER_PROPERTY",
+    "counterexample": [
+      {
+        "kind": "initial",
+        "state": {
+          "Mirror.on": false,
+          "Source.on": false
+        }
+      },
+      {
+        "kind": "independent",
+        "action": "Mirror.set",
+        "input": {
+          "desired": true
+        },
+        "output": true,
+        "state": {
+          "Mirror.on": true,
+          "Source.on": false
+        }
+      }
+    ]
+  },
+  "gate_before_local_evidence": "Blocked",
+  "gate_after_local_evidence": "Approved",
+  "attestation_with_ephemeral_test_key": "Approved",
+  "workspace_integrity_audit": "Consistent",
+  "scope": "finite abstract two-component atomic interleavings; NOT C++ refinement, secure execution, or production authorization"
+}

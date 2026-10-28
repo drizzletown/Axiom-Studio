@@ -1,0 +1,13 @@
+model Source {
+  type Flag = Bool
+  state { on: Flag }
+  init { on == false }
+  action set(desired: Flag) -> Bool {
+    case true { modifies { on } ensures on' == desired && result == true }
+  }
+  action peek() -> Bool {
+    case true { modifies { } ensures result == on }
+  }
+  property WellTyped { always on == true || on == false }
+  observe { set.input, set.output, peek.input, peek.output }
+}

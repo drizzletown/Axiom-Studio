@@ -1,0 +1,10 @@
+model Mirror {
+  type Flag = Bool
+  state { on: Flag }
+  init { on == false }
+  action set(desired: Flag) -> Bool {
+    case true { modifies { on } ensures on' == desired && result == true }
+  }
+  property WellTyped { always on == true || on == false }
+  observe { set.input, set.output }
+}

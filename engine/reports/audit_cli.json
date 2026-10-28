@@ -1,0 +1,11 @@
+{
+  "examined": {
+    "content_objects": 14,
+    "cpp_runs": 0,
+    "model_runs": 2
+  },
+  "findings": [],
+  "schema": "ax-local-evidence-audit/0.1",
+  "status": "Consistent",
+  "trust_boundary": "Local integrity audit only. A writer with workspace access can forge a self-consistent set of reports and digests."
+}

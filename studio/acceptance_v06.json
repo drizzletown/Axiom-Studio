@@ -1,0 +1,38 @@
+{
+  "schema": "ax-studio-v06-acceptance/0.6",
+  "release_authorized": false,
+  "runs": [
+    {
+      "scope": "V0.6 unit and HTTP",
+      "cases": 8,
+      "passed": 8,
+      "completed": true
+    },
+    {
+      "scope": "V0.5 factory/HTTP/production compatibility",
+      "cases": 17,
+      "passed": 17,
+      "completed": true
+    },
+    {
+      "scope": "legacy orchestration/production HTTP/project HTTP",
+      "cases": 14,
+      "passed": 14,
+      "completed": true
+    },
+    {
+      "scope": "legacy candidates/studio unified run",
+      "completed": false,
+      "note": "timeout; excluded from passing counts"
+    },
+    {
+      "scope": "real multi-file candidate end-to-end",
+      "completed": true,
+      "passed": true,
+      "incorrect_option_blocked": true,
+      "correct_option_tested": true,
+      "result_state": "accepted_test_only"
+    }
+  ],
+  "quality_scope": "trusted-local test-level prototype; no release authorization"
+}

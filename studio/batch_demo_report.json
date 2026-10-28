@@ -1,0 +1,102 @@
+{
+  "schema": "ax-v06-demonstration/0.6",
+  "id": "batch-ea7906e4b52cd4b0",
+  "state": "accepted_test_only",
+  "independent_model_gate": "spec_ready",
+  "evaluation": {
+    "correct": {
+      "state": "tested",
+      "failed_at": null,
+      "duration_s": 13.864
+    },
+    "wrong-receipt": {
+      "state": "blocked",
+      "failed_at": "cpp_full",
+      "duration_s": 9.377
+    }
+  },
+  "comparison": {
+    "id": "batch-ea7906e4b52cd4b0",
+    "comparison": [
+      {
+        "id": "opt-58d620fbc2cfd3",
+        "name": "correct",
+        "digest": "8bc7e05b3583bd4a6e552242a0aa5d2f2ea079bf2f8f032409ab3a16da087879",
+        "status": "tested",
+        "passed": true,
+        "checks": [
+          {
+            "step": "model",
+            "returncode": 0,
+            "decision": null,
+            "outcome": null,
+            "failed_targets": []
+          },
+          {
+            "step": "model_gate",
+            "returncode": 0,
+            "decision": "Approved",
+            "outcome": null,
+            "failed_targets": []
+          },
+          {
+            "step": "cpp_full",
+            "returncode": 0,
+            "decision": null,
+            "outcome": "Tested",
+            "failed_targets": []
+          },
+          {
+            "step": "cpp_gate",
+            "returncode": 0,
+            "decision": "Approved",
+            "outcome": null,
+            "failed_targets": []
+          }
+        ]
+      },
+      {
+        "id": "opt-f4791a8511fd95",
+        "name": "wrong-receipt",
+        "digest": "0d2282b39ff3a300492bdbce224f03ddf19f79c84cddcbe0e6de00d4fd5e29fa",
+        "status": "blocked",
+        "passed": false,
+        "checks": [
+          {
+            "step": "model",
+            "returncode": 0,
+            "decision": null,
+            "outcome": null,
+            "failed_targets": []
+          },
+          {
+            "step": "model_gate",
+            "returncode": 0,
+            "decision": "Approved",
+            "outcome": null,
+            "failed_targets": []
+          },
+          {
+            "step": "cpp_full",
+            "returncode": 2,
+            "decision": null,
+            "outcome": "Violated",
+            "failed_targets": [
+              "format",
+              "integration"
+            ]
+          }
+        ]
+      }
+    ],
+    "automatic_selection": false,
+    "note": "人工比较; 通过测试不等于形式化精化或生产许可"
+  },
+  "audit_valid": true,
+  "changed_targets": [
+    "ledger.cpp",
+    "format.cpp"
+  ],
+  "protected_sources_unchanged": true,
+  "production_release": false
+}

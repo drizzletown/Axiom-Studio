@@ -1,0 +1,259 @@
+{
+  "ir_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+  "model": "TwoAccount",
+  "result": "OK",
+  "schema_version": "ax-ir/0.1",
+  "semantics_version": "ax-sem/0.1"
+}
+{
+  "notes": [
+    "model-level finite checking only; not proof of C++ implementation"
+  ],
+  "obligations": [
+    {
+      "assurance": "Bounded",
+      "id": "TwoAccount/model/property/NonNegative",
+      "property": "NonNegative",
+      "subject": "abstract-model"
+    },
+    {
+      "assurance": "Bounded",
+      "id": "TwoAccount/model/property/Conservation",
+      "property": "Conservation",
+      "subject": "abstract-model"
+    },
+    {
+      "assurance": "Bounded",
+      "id": "TwoAccount/model/action/move/cases",
+      "property": "cases",
+      "subject": "abstract-model"
+    },
+    {
+      "assurance": "Bounded",
+      "id": "TwoAccount/model/action/move/transition_total",
+      "property": "transition_total",
+      "subject": "abstract-model"
+    },
+    {
+      "assurance": "Bounded",
+      "id": "TwoAccount/model/action/move/type_frame",
+      "property": "type_frame",
+      "subject": "abstract-model"
+    }
+  ],
+  "spec_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f"
+}
+{
+  "record": {
+    "evidence_digest": "sha256:15d6da8d992d522dbb8c4c63dcde96d9e46132a79d2da6ae25aa7c2a81fe0f97",
+    "outcome": "Bounded",
+    "report_digest": "sha256:869af2a746c0562d2261ffcfbc967d9018f35d6ad131532e26475176147c7532",
+    "run_id": "run-b3d9f54a00554610bace",
+    "spec_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f"
+  },
+  "verification": {
+    "counterexample": null,
+    "outcome": "Bounded",
+    "reason": "FINITE_DOMAIN_EXHAUSTED",
+    "scope": {
+      "execution_model": "synchronous-action-boundaries",
+      "finite_reachable_exhaustion": true,
+      "input_domains": {
+        "move": {
+          "m": {
+            "kind": "Int",
+            "max": 3,
+            "min": 0
+          }
+        }
+      },
+      "max_states": 50000,
+      "max_transitions": 250000,
+      "semantics": "ax-sem/0.1",
+      "state_domain": {
+        "a": {
+          "kind": "Int",
+          "max": 3,
+          "min": 0
+        },
+        "b": {
+          "kind": "Int",
+          "max": 3,
+          "min": 0
+        }
+      },
+      "timeout_seconds": 30
+    },
+    "statistics": {
+      "checked_transitions": 212,
+      "initial_states": 1,
+      "reachable_states": 4
+    },
+    "verified_obligation_ids": [
+      "TwoAccount/model/property/NonNegative",
+      "TwoAccount/model/property/Conservation",
+      "TwoAccount/model/action/move/cases",
+      "TwoAccount/model/action/move/transition_total",
+      "TwoAccount/model/action/move/type_frame"
+    ]
+  }
+}
+{
+  "candidate_digest": null,
+  "created_at": "2026-10-25T04:16:32Z",
+  "decision": "Approved",
+  "gate_id": "gate-82de31332f3e43b99b06",
+  "policy_digest": "sha256:e2d059cec69e3a67d0d830ef7caadef1e8e58bed3bde96645d9cf91d2c85fb45",
+  "reasons": [],
+  "required_model_obligations": [
+    "TwoAccount/model/property/NonNegative",
+    "TwoAccount/model/property/Conservation",
+    "TwoAccount/model/action/move/cases",
+    "TwoAccount/model/action/move/transition_total",
+    "TwoAccount/model/action/move/type_frame"
+  ],
+  "satisfied_model_obligations": [
+    "TwoAccount/model/action/move/cases",
+    "TwoAccount/model/action/move/transition_total",
+    "TwoAccount/model/action/move/type_frame",
+    "TwoAccount/model/property/Conservation",
+    "TwoAccount/model/property/NonNegative"
+  ],
+  "spec_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+  "stage": "P0",
+  "target": "model"
+}
+{
+  "candidate_digest": null,
+  "created_at": "2026-10-25T04:16:33Z",
+  "decision": "Blocked",
+  "gate_id": "gate-215d457eadcb4126b563",
+  "policy_digest": "sha256:e2d059cec69e3a67d0d830ef7caadef1e8e58bed3bde96645d9cf91d2c85fb45",
+  "reasons": [
+    "MISSING_CANDIDATE_DIGEST",
+    "MISSING_CPP_BINDING_AND_IMPLEMENTATION_EVIDENCE"
+  ],
+  "required_model_obligations": [
+    "TwoAccount/model/property/NonNegative",
+    "TwoAccount/model/property/Conservation",
+    "TwoAccount/model/action/move/cases",
+    "TwoAccount/model/action/move/transition_total",
+    "TwoAccount/model/action/move/type_frame"
+  ],
+  "satisfied_model_obligations": [
+    "TwoAccount/model/action/move/cases",
+    "TwoAccount/model/action/move/transition_total",
+    "TwoAccount/model/action/move/type_frame",
+    "TwoAccount/model/property/Conservation",
+    "TwoAccount/model/property/NonNegative"
+  ],
+  "spec_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+  "stage": "P0",
+  "target": "cpp"
+}
+{
+  "record": {
+    "evidence_digest": "sha256:ba2cb298efba4915d87a994949b5d19aaf5671f12c6429e9638ca0b610923e64",
+    "outcome": "Violated",
+    "report_digest": "sha256:467b94043f881cfb90be2ea6a59d9c69789efdc670b88db781629acdf4a968ff",
+    "run_id": "run-e3d1c409964347acb365",
+    "spec_digest": "sha256:a71505b06f1cc9bb868f74f0bf332c6a40b53a7ec4a98d6be37dd0e77cbc8650"
+  },
+  "verification": {
+    "counterexample": [
+      {
+        "kind": "initial",
+        "state": {
+          "a": 3,
+          "b": 0
+        }
+      },
+      {
+        "action": "move",
+        "input": {
+          "m": 1
+        },
+        "result": true,
+        "state": {
+          "a": 3,
+          "b": 1
+        }
+      }
+    ],
+    "detail": "Conservation",
+    "outcome": "Violated",
+    "reason": "E_PROPERTY",
+    "scope": {
+      "execution_model": "synchronous-action-boundaries",
+      "finite_reachable_exhaustion": false,
+      "input_domains": {
+        "move": {
+          "m": {
+            "kind": "Int",
+            "max": 3,
+            "min": 0
+          }
+        }
+      },
+      "max_states": 50000,
+      "max_transitions": 250000,
+      "semantics": "ax-sem/0.1",
+      "state_domain": {
+        "a": {
+          "kind": "Int",
+          "max": 3,
+          "min": 0
+        },
+        "b": {
+          "kind": "Int",
+          "max": 3,
+          "min": 0
+        }
+      },
+      "timeout_seconds": 30
+    },
+    "statistics": {
+      "checked_transitions": 98,
+      "reachable_states": 4
+    }
+  }
+}
+{
+  "analysis": "exact semantic hashes only; changed IR conservatively invalidates all model evidence",
+  "assessments": [
+    {
+      "assessment_id": "assessment-d14d0330203b40949ceb",
+      "created_at": "2026-10-25T04:16:34Z",
+      "freshness": "Stale",
+      "reason": "changed-semantics-or-context",
+      "run_id": "run-b3d9f54a00554610bace",
+      "target_spec_digest": "sha256:a71505b06f1cc9bb868f74f0bf332c6a40b53a7ec4a98d6be37dd0e77cbc8650"
+    }
+  ],
+  "new_digest": "sha256:a71505b06f1cc9bb868f74f0bf332c6a40b53a7ec4a98d6be37dd0e77cbc8650",
+  "old_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+  "revalidate": [
+    "run-b3d9f54a00554610bace"
+  ]
+}
+{
+  "runs": [
+    {
+      "created_at": "2026-10-25T04:16:31Z",
+      "evidence_digest": "sha256:15d6da8d992d522dbb8c4c63dcde96d9e46132a79d2da6ae25aa7c2a81fe0f97",
+      "outcome": "Bounded",
+      "run_id": "run-b3d9f54a00554610bace",
+      "spec_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f"
+    },
+    {
+      "created_at": "2026-10-25T04:16:34Z",
+      "evidence_digest": "sha256:ba2cb298efba4915d87a994949b5d19aaf5671f12c6429e9638ca0b610923e64",
+      "outcome": "Violated",
+      "run_id": "run-e3d1c409964347acb365",
+      "spec_digest": "sha256:a71505b06f1cc9bb868f74f0bf332c6a40b53a7ec4a98d6be37dd0e77cbc8650"
+    }
+  ]
+}
+....................                                                     [100%]
+20 passed in 0.19s
+DEMO PASSED: model accepted; C++ blocked; broken property rejected; evidence invalidated.

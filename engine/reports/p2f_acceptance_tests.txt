@@ -1,0 +1,3 @@
+Axiom P0-P2f full suite completed
+146 passed in 55.54s
+See pytest_p2f_verbose.txt for individual test results.

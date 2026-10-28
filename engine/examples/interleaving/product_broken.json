@@ -1,0 +1,7 @@
+{
+ "schema":"ax-interleaving-composition/0.1",
+ "components":[{"id":"Source","spec":"Source.ax"},{"id":"Mirror","spec":"Mirror.ax"}],
+ "sync":[{"left":"Source.peek","right":"Mirror.peek","output_relation":"equal"}],
+ "independent":["Source.set","Mirror.set"],
+ "properties":[{"name":"MirroredState","expr":{"op":"eq","args":[{"ref":"Source.on"},{"ref":"Mirror.on"}]}}]
+}

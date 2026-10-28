@@ -1,0 +1,15 @@
+{
+  "schema": "ax-factory-demo/0.5",
+  "campaign_id": "factory-bcf0b4347b4901cex",
+  "state": "completed_test_only",
+  "effective_state": "completed_test_only",
+  "audit_valid": true,
+  "events": 8,
+  "proposal_id": "p-d927908d25f31ac27274fd",
+  "code_applied": true,
+  "model_gate": "Approved",
+  "cpp_independent_verification": "passed",
+  "production_release": false,
+  "contract_digest": "sha256:9941038ba889cca37ddcf5e156a21d140bdf338b5d0956b4f3f6fb0090f84b99",
+  "diagnostic": null
+}

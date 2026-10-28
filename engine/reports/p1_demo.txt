@@ -1,0 +1,17 @@
+Workspace: /mnt/data/axiom-p1/reports/demo_work
+{
+  "p0_model": "Bounded",
+  "p1_cpp": "Tested",
+  "tested_reachable_pairs": 16,
+  "observed_calls_per_variant": 32,
+  "p1_gate": "Approved",
+  "faults": {
+    "broken_mapping": "E_CPP_REFINEMENT_MISMATCH",
+    "broken_boundary": "E_CPP_REFINEMENT_MISMATCH",
+    "broken_overflow": "E_CPP_SANITIZER_OR_CRASH",
+    "broken_frozen_input": "E_CPP_REFINEMENT_MISMATCH"
+  },
+  "compile_failure": "Unknown",
+  "changed_flags_gate": "Blocked",
+  "results_dir": "/mnt/data/axiom-p1/reports/demo_work"
+}

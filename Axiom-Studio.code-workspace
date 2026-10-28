@@ -1,0 +1,35 @@
+{
+  "folders": [{"name": "Axiom 工作区（VS Code 编辑）", "path": "workspace"}],
+  "settings": {"files.exclude": {"**/.studio-data": true}},
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Axiom Studio：打开流程工作台",
+        "type": "shell",
+        "command": "python",
+        "args": ["${workspaceFolder}/../run_studio.py"],
+        "options": {"cwd": "${workspaceFolder}/.."},
+        "isBackground": true,
+        "problemMatcher": []
+      },
+      {
+        "label": "Axiom：检查行为规格",
+        "type": "shell",
+        "command": "python",
+        "args": ["-m", "axiom", "--workspace", "${workspaceFolder}/../.studio-data/vscode-evidence", "check", "${workspaceFolder}/${input:axiomSpec}"],
+        "options": {"cwd": "${workspaceFolder}", "env": {"PYTHONPATH": "${workspaceFolder}/../engine/src"}},
+        "problemMatcher": []
+      },
+      {
+        "label": "Axiom：验证行为规格（有界）",
+        "type": "shell",
+        "command": "python",
+        "args": ["-m", "axiom", "--workspace", "${workspaceFolder}/../.studio-data/vscode-evidence", "verify", "${workspaceFolder}/${input:axiomSpec}"],
+        "options": {"cwd": "${workspaceFolder}", "env": {"PYTHONPATH": "${workspaceFolder}/../engine/src"}},
+        "problemMatcher": []
+      }
+    ],
+    "inputs": [{"id": "axiomSpec", "type": "promptString", "description": "工作区相对规格路径，例如 cpp_project/ledger.ax", "default": "cpp_project/ledger.ax"}]
+  }
+}

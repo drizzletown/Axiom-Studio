@@ -1,0 +1,10 @@
+{
+  "schema": "ax-evidence-dependencies/0.1",
+  "components": [
+    {"id": "TwoAccount", "spec": "account.ax", "exports": ["NonNegative", "Conservation"]},
+    {"id": "Toggle", "spec": "flag.ax", "exports": ["StableType"]}
+  ],
+  "dependencies": [
+    {"consumer": "Toggle", "provider": "TwoAccount", "property": "Conservation"}
+  ]
+}

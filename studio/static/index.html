@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio · Trustworthy Software Construction</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<div class="studio">
+  <header class="titlebar">
+    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">PRODUCTION · 0.8</span></div>
+    <nav class="topnav"><button class="navitem" id="navProjects">项目全景</button><button class="navitem" id="navFile">文件</button><button class="navitem" id="navView">视图</button><button class="navitem" id="navVerify">验证</button></nav>
+    <div class="title-center"><span class="tiny-circle"></span><span id="workspace-title">AXIOM / WORKSPACE</span><span class="title-chevron">⌄</span></div>
+    <div class="title-actions"><button title="搜索文件 Ctrl+P" id="quickOpen" class="title-icon">⌕</button><button title="保存 Ctrl+S" id="topSave" class="title-icon">▣</button><button title="帮助" id="helpButton" class="title-icon">ⓘ</button><div class="avatar">A</div></div>
+  </header>
+  <div class="workbench">
+    <aside class="activity">
+      <button id="projectRail" class="rail-btn active" title="项目全景 / 可信演化"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></button>
+      <button data-view="explorer" class="rail-btn" title="资源管理器"><svg viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3z M3 6V4h8l2 2"/></svg></button>
+      <button data-view="verify" class="rail-btn" title="验证中心"><svg viewBox="0 0 24 24"><path d="M9 3h6l2 3h3v14H4V6h3z M8 12l3 3 5-6"/></svg></button>
+      <button data-view="evidence" class="rail-btn" title="证据中心"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z M15 3v5h5 M9 12h7 M9 16h7"/></svg></button>
+      <button data-view="ai" class="rail-btn" title="AI 构造任务"><svg viewBox="0 0 24 24"><path d="M12 2l2.1 6.3L21 11l-6.9 2.7L12 20l-2.1-6.3L3 11l6.9-2.7z"/></svg></button>
+      <button data-view="history" class="rail-btn" title="任务历史"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 3"/></svg></button>
+      <div class="rail-spacer"></div><button data-view="help" class="rail-btn" title="关于 Axiom"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4 M12 17v.5"/></svg></button>
+    </aside>
+    <aside class="sidebar">
+      <div class="sidebar-title"><span id="sidebar-label">构造工作台</span><div><button class="icon-only" id="newFile" title="新建文件 Ctrl+N">＋</button><button class="icon-only" id="refreshTree" title="刷新">↻</button></div></div>
+      <section class="sidebar-section" id="projectView"><div class="section-row"><b>可信构造流程</b></div>
+        <div class="project-sidebar-intro">以需求和规格为起点，编排 AI 构造、独立验证、质量裁决和持续演化。</div>
+        <button id="projectSidebarCreate" class="project-sidebar-nav primary">＋ 创建软件构造项目</button>
+        <button id="projectSidebarOverview" class="project-sidebar-nav">◈ 查看工程全景</button>
+        <div class="side-divider"></div>
+        <div class="section-row"><b>构造流程</b></div>
+        <div class="project-sidebar-step"><b>01</b> 需求与行为规格</div>
+        <div class="project-sidebar-step"><b>02</b> 验证义务与规格 Gate</div>
+        <div class="project-sidebar-step"><b>03</b> AI 构造候选 / 人工审查</div>
+        <div class="project-sidebar-step"><b>04</b> 独立检查与可信证据</div>
+        <div class="project-sidebar-step"><b>05</b> 人工裁决 / 演化分支</div>
+        <div class="side-divider"></div><p class="side-note">第三方编辑、Git 与调试：<b>VS Code</b>。这里不复制编辑器功能。</p>
+      </section><section class="sidebar-section hidden" id="explorerView"><div class="section-row"><span class="caret">⌄</span><b>AXIOM WORKSPACE</b><span class="small-right" id="fileCount"></span></div><div class="filter-wrap"><span>⌕</span><input id="fileFilter" placeholder="筛选文件..." spellcheck="false"/></div><div id="fileTree" class="file-tree"></div></section>
+      <section class="sidebar-section hidden" id="verifyView"><div class="section-row"><span class="caret">⌄</span><b>验证流水线</b></div><div class="pipeline">
+        <button class="pipe-row" data-action="check"><span class="pipe-step">01</span><span><b>解析 · 类型检查</b><small>规范 → 统一语义 IR</small></span><span class="pipe-arrow">↗</span></button>
+        <button class="pipe-row" data-action="plan"><span class="pipe-step">02</span><span><b>验证义务</b><small>Property / Action / Frame</small></span><span class="pipe-arrow">↗</span></button>
+        <button class="pipe-row" data-action="verify"><span class="pipe-step">03</span><span><b>模型验证</b><small>有限状态穷举与反例</small></span><span class="pipe-arrow">↗</span></button>
+        <button class="pipe-row" data-action="gate"><span class="pipe-step">04</span><span><b>模型 Gate</b><small>检查当前证据是否满足策略</small></span><span class="pipe-arrow">↗</span></button>
+        <button class="pipe-row" data-action="audit"><span class="pipe-step">05</span><span><b>证据一致性审计</b><small>持久化对象检查</small></span><span class="pipe-arrow">↗</span></button>
+      </div><div class="side-divider"></div><div class="section-row"><b>C++ 工程</b></div><div class="side-note">选中 <code>cpp_project/project.json</code> 后，可以在工具栏运行项目增量验证。</div></section>
+      <section class="sidebar-section hidden" id="evidenceView"><div class="section-row"><b>本地证据索引</b><button id="reloadEvidence" class="icon-only">↻</button></div><div id="evidenceList" class="records"><div class="empty-list">验证后这里会出现运行记录。</div></div></section>
+      <section class="sidebar-section hidden" id="aiView"><div class="section-row"><b>AI 辅助构造</b></div>
+      <div class="ai-tile"><div class="ai-tile-kicker">SPEC → CANDIDATE</div><h3>从规格出发</h3><p>自动组织当前规格、摘要和验证义务，形成可交给 AI 编程助手的受约束任务。</p><button id="aiTaskButton" class="tool primary">生成 AI 构造任务 ↗</button></div><div class="side-divider"></div><div class="candidate-tile"><div class="ai-tile-kicker">REVIEW-GATED CANDIDATES</div><h3>候选审查工作流</h3><p>从外部 AI 粘贴候选，或显式调用已配置模型。每次修改先人工审查、核对摘要，再手动应用和验证。</p><button id="candidateOpen" class="tool primary">打开候选工作台 ↗</button><button id="candidateRefresh" class="tool secondary">刷新记录</button><div id="candidateMiniList" class="candidate-mini"></div></div><div class="side-divider"></div><p class="side-note">候选先隔离暂存。模型只在用户明确授权后收到规格和源码；测试级 Gate 不构成生产发布许可。</p>
+      </section>
+      <section class="sidebar-section hidden" id="historyView"><div class="section-row"><b>最近任务</b><button id="reloadHistory" class="icon-only">↻</button></div><div id="historyList" class="records"></div></section>
+      <section class="sidebar-section hidden" id="helpView"><div class="section-row"><b>关于 Axiom Studio</b></div><p class="side-note">Axiom 是面向 AI 时代软件构造的行为规格与可信演化系统。</p><div class="side-divider"></div><p class="side-note">该 IDE 将编辑器、原模型引擎、真实 C++ 测试、反例、证据库及 Gate 集成在本机。当前仍为测试级原型。</p><div class="side-note">键盘快捷键：<kbd>Ctrl</kbd> + <kbd>S</kbd> 保存，<kbd>Ctrl</kbd> + <kbd>P</kbd> 打开文件，<kbd>Ctrl</kbd> + <kbd>Enter</kbd> 验证。</div></section>
+      <div class="sidebar-footer"><span class="dot-green"></span> LOCAL ENGINE <span id="engine-indicator">CONNECTED</span></div>
+    </aside>
+    <main class="main">
+      <div class="breadcrumb"><span>WORKSPACE</span><span class="bc-sep">/</span><span id="currentFolder">examples</span><span class="bc-sep">/</span><strong id="currentName">Welcome</strong><span class="breadcrumb-end" id="breadcrumbNote">AXIOM CORE · ax-sem/0.1</span></div>
+      <div class="tab-strip" id="tabs"><div class="welcome-tab">⟠ &nbsp; Welcome</div></div>
+      <div class="toolbar">
+        <div class="toolbar-label"><span class="toolbar-dot"></span><span id="toolbar-name">编辑与验证</span></div><div class="toolbar-spacer"></div>
+        <button id="btnCheck" class="tool secondary" title="解析规格">◇ 检查</button>
+        <button id="btnPlan" class="tool secondary" title="列出验证义务">☷ 义务</button>
+        <button id="btnVerify" class="tool primary" title="模型验证 Ctrl+Enter"><span>▶</span> 模型验证</button>
+        <button id="btnGate" class="tool secondary" title="模型 Gate">⊞ Gate</button>
+        <button id="btnCandidate" class="tool secondary" title="候选构造工作流">✧ 候选</button>
+        <button id="moreActions" class="tool kebab" title="更多操作">⋯</button>
+        <div id="actionMenu" class="action-menu hidden"></div>
+      </div>
+      <div class="centerbody">
+        <section class="editor-area" id="editorArea">
+          <section id="projectDashboard" class="project-dashboard">
+            <div class="project-intro"><div class="project-kicker">AXIOM STUDIO / SOFTWARE CONSTRUCTION SYSTEM</div>
+              <div class="project-title-line"><div><h1>软件构造全景</h1><p>用行为规格约束 AI 构造，用独立证据支撑裁决，并让演化过程持续可追溯。</p></div><button class="tool primary" id="projectNew">＋ 关联现有工程</button></div></div>
+            <section class="cockpit" aria-label="Axiom 1.0 软件生产总控台">
+              <div class="cockpit-heading"><div><div class="project-kicker">AXIOM STUDIO 1.0 / PRODUCTION COCKPIT</div><h2>今日软件生产总控台</h2><p>统一查看规格、构造、独立验证、人工裁决与演化状态。这里只编排流程，不代替编译器或编辑器。</p></div><div class="launch-head-actions"><button id="cockpitRefresh" class="tool secondary">更新项目状态</button><button id="cockpitDoctor" class="tool secondary">环境诊断</button></div></div>
+              <div id="cockpitSummary" class="cockpit-metrics" aria-live="polite">正在核对项目状态…</div>
+              <div class="cockpit-layout"><div><h3>生产流程与证据</h3><div id="cockpitProjects" class="cockpit-projects"></div></div><div><h3>下一步行动</h3><div id="cockpitActions" class="cockpit-actions"></div><p class="project-assurance">人工批准、独立验证和 Gate 不得跳过；测试级结论不构成正式软件发布授权。</p></div></div>
+            </section>
+            <section class="launch-head">
+              <div><strong>生产任务中心</strong><p>从可验证模板开始，按项目状态处理下一项工作。构造、审查、测试与裁决仍遵守原有安全边界。</p></div>
+              <div class="launch-head-actions"><button class="tool primary" id="launchOpen">＋ 新建可运行项目</button><button class="tool primary" id="launchAutoVerify">批量执行安全规格验证</button><button class="tool secondary" id="launchRefresh">刷新待办</button></div>
+            </section>
+            <div id="launchBatch" class="launch-batch" aria-live="polite"></div><div id="launchQueue" class="launch-queue">正在检查待处理事项…</div>
+            <div class="project-metrics" id="projectMetrics"><div>加载项目状态…</div></div>
+            <div class="project-columns"><div class="project-panel"><div class="project-panel-head">工程与演化分支 <button id="projectRefresh" class="tool secondary">刷新</button></div><div id="projectList" class="project-list"></div></div>
+            <div class="project-panel project-detail"><div class="project-panel-head">构造链与可信证据 <span id="projectStatusLabel">未选择项目</span></div><div id="projectDetail" class="project-empty">创建项目并验证行为规格，从这里开始新的软件构造过程。</div></div></div>
+            <div class="project-bottom-note">AXIOM TRUST BOUNDARY · 测试级准入 ≠ 形式化证明 ≠ 生产发布。代码编辑与调试交由 VS Code 等现有工具。</div>
+          </section>
+          <div id="welcome" class="welcome hidden">
+            <div class="hero-watermark">⟠</div>
+            <div class="welcome-kicker"><span class="kicker-line"></span> A NEW WAY TO BUILD TRUSTED SOFTWARE</div>
+            <h1>构造可以被验证的<span>软件。</span></h1>
+            <p class="welcome-desc">让需求成为可执行规格，让生成实现接受独立验证，让每次修改都有可追溯的证据。</p>
+            <div class="welcome-actions"><button id="openSample" class="big-cta">开始：打开 TwoAccount.ax <span>↗</span></button><button id="openProject" class="big-alt">查看 C++ 示例工程 →</button></div>
+            <div class="onboarding"><div class="ob-title">AXIOM WORKFLOW <span>01 — 05</span></div><div class="onboarding-steps"><div><span>01</span><b>规格</b><small>Type · State · Action</small></div><div><span>02</span><b>语义</b><small>Canonical IR</small></div><div><span>03</span><b>验证</b><small>Property · Trace</small></div><div><span>04</span><b>证据</b><small>Digest · Scope</small></div><div><span>05</span><b>准入</b><small>Evidence Gate</small></div></div></div>
+          </div>
+          <div id="editorFrame" class="editor-frame hidden"><div class="editor-topline"><span id="editLang">AXIOM</span><span id="editModified">SPECIFICATION</span><span class="editor-top-right" id="editSize"></span></div><div class="editor-scroll" id="editorScroll"><div class="line-nums" id="lineNumbers">1</div><div class="code-stage"><pre class="code-highlight" id="codeHighlight" aria-hidden="true"></pre><textarea id="codeInput" aria-label="代码编辑器" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" wrap="off"></textarea></div></div></div>
+        </section>
+        <aside class="inspector">
+          <div class="inspector-top"><span>验证洞察</span><span class="inspector-menu">◫</span></div>
+          <div class="inspector-body"><div class="inspector-label">CURRENT VERIFICATION</div><div class="result-head"><div id="outcomeIcon" class="outcome-icon neutral">◇</div><div><strong id="outcomeTitle">尚未验证</strong><small id="outcomeSubtitle">请选择规格并执行验证</small></div></div>
+          <div class="stats-grid"><div><span>可达状态</span><b id="statStates">—</b></div><div><span>检查转换</span><b id="statTransitions">—</b></div><div><span>执行耗时</span><b id="statTime">—</b></div><div><span>义务数量</span><b id="statObligations">—</b></div></div>
+          <div class="inspector-subhead">义务与证据 <span id="obligationCounter">0</span></div><div id="obligationList" class="obligation-list"><div class="muted-small">点击「义务」查看本模型需要满足的验证项。</div></div>
+          <div class="inspector-subhead">反例与诊断</div><div id="counterexamplePanel" class="counterexample-box"><span class="counter-empty">◎ &nbsp; 等待验证结果</span></div>
+          <div class="inspector-subhead">质量准入</div><div id="gateCard" class="gate-card"><div class="gate-indicator">◇</div><div><b>未作判定</b><span>Gate 按当前证据独立计算</span></div></div>
+          <div class="risk-note"><span>!</span> 原型中的 Bounded / Tested 不代表生产级形式化正确性或发布许可。</div>
+          </div>
+        </aside>
+      </div>
+      <div class="bottom" id="bottomPanel"><div class="bottom-tabs"><button data-console="output" class="bt active">输出</button><button data-console="json" class="bt">完整报告</button><button data-console="issues" class="bt">问题 <span id="issueCount">0</span></button><span class="bottom-spacer"></span><span class="terminal-marker"><span class="dot-green"></span><span id="terminalStatus">READY</span></span><button id="clearTerminal" class="icon-only" title="清除输出">⌫</button><button id="toggleBottom" class="icon-only" title="折叠/展开">⌄</button></div><div class="console-content" id="consoleOutput"><div class="console-start"><span class="console-prompt">❯</span> Axiom Studio 已就绪。打开 .ax 规格并执行验证。<br><span class="console-hint">Runtime: local / model: ax-sem/0.1 / release authorization: disabled</span></div></div><div class="console-content hidden" id="consoleJson"></div><div class="console-content hidden" id="consoleIssues"></div></div>
+    </main>
+  </div>
+  <footer class="statusbar"><div class="status-left"><span class="status-mark">⟠</span><span>axiom / main*</span><span id="statusMessage">本地工作区已连接</span></div><div class="status-right"><span id="statusCursor">Ln 1, Col 1</span><span>UTF-8</span><span id="statusLanguage">Axiom</span><span>⛨ 测试级原型</span><span>⟲ Local</span></div></footer>
+</div>
+<div id="paletteOverlay" class="modal-overlay hidden"><div class="palette"><div class="palette-top">⌕ <input id="paletteInput" placeholder="快速打开文件…" autocomplete="off"/></div><div id="paletteResults" class="palette-results"></div><div class="palette-foot">↑↓ 移动 · Enter 打开 · Esc 关闭</div></div></div>
+<div id="trustOverlay" class="modal-overlay hidden"><div class="dialog"><div class="warning-logo">!</div><h2>执行可信本地 C++ 代码</h2><p>此操作会编译并执行当前工程的 C++ 程序。现有 Axiom 隔离功能仍为实验性，不能安全执行未经审查的恶意源码。</p><label class="check-line"><input id="trustChecked" type="checkbox"> 我已审查此工作区的源码，并确认这是可信的本地示例。</label><div class="dialog-actions"><button id="trustCancel" class="tool secondary">取消</button><button id="trustRun" class="tool primary" disabled>确认执行</button></div></div></div>
+<div id="aiOverlay" class="modal-overlay hidden"><div class="ai-dialog"><div class="ai-dialog-title"><div><span class="ai-badge">AI CONSTRUCTION HANDOFF</span><h2>受约束的候选构造任务</h2></div><button id="aiClose" class="icon-only">×</button></div><p>任务绑定当前 Axiom 规格与验证义务。复制给 AI 助手后，请审查候选 C++ 代码，再回到本 IDE 进行独立验证。</p><textarea id="aiPrompt" readonly spellcheck="false"></textarea><div class="ai-dialog-actions"><small id="aiTaskInfo">尚未生成</small><button id="aiCopy" class="tool primary">复制任务文本</button></div></div></div>
+<div id="projectCreateOverlay" class="modal-overlay hidden"><div class="project-create-dialog">
+  <header><div><div class="project-kicker">NEW CONSTRUCTION WORKFLOW</div><h2>创建软件构造项目</h2><p>将目标、行为规格和实现清单纳入同一个可信流程。</p></div><button id="projectCreateClose" class="icon-only">×</button></header>
+  <form id="projectCreateForm"><label>项目名称<input name="name" value="TwoAccount 可信构造" required maxlength="100"></label>
+  <label>需求与验收意图<textarea name="goal" required rows="3">保证账户余额守恒，并要求 C++ 实现接受独立模型与测试级验证。</textarea></label>
+  <label>行为规格（工作区路径）<input name="spec" value="cpp_project/ledger.ax" required></label>
+  <label>C++ 工程清单（可选）<input name="manifest" value="cpp_project/project.json"></label>
+  <div class="project-form-actions"><button type="button" class="tool secondary" id="projectCreateCancel">取消</button><button type="submit" class="tool primary">创建工作流</button></div></form></div></div>
+<div id="launchOverlay" class="modal-overlay hidden"><div class="project-create-dialog launch-dialog">
+  <header><div><div class="project-kicker">AXIOM STUDIO / QUICK START</div><h2>开始一次可验证的软件构造</h2><p>创建独立工作区和追溯项目，不执行 AI 或 C++；下一步直接进行模型验证。</p></div><button class="icon-only" id="launchClose">×</button></header>
+  <form id="launchForm">
+    <label>项目起点<select name="template" id="launchTemplate" required></select></label>
+    <div id="launchHint" class="project-assurance"></div>
+    <label>工作区目录标识（小写英文）<input name="slug" value="my-ledger" pattern="[a-z][a-z0-9_-]{2,31}" required></label>
+    <label>项目名称<input name="name" value="我的可信软件项目" required maxlength="100"></label>
+    <label>目标与验收意图<textarea name="goal" rows="3" required></textarea></label>
+    <div class="project-form-actions"><button type="button" class="tool secondary" id="launchCancel">取消</button><button type="submit" class="tool primary">创建工作区与生产流程</button></div>
+  </form></div></div>
+<div id="candidateOverlay" class="modal-overlay hidden">
+  <div class="candidate-dialog">
+    <header class="candidate-dialog-header"><div><div class="ai-tile-kicker">AXIOM / SPEC → IMPLEMENTATION → EVIDENCE</div><h2>候选构造与人工审查</h2><p>生成或粘贴代码仅创建候选快照。审查、写入工作区和编译验证是三个独立动作。</p></div><button id="candidateClose" class="icon-only">×</button></header>
+    <div class="candidate-grid"><section class="candidate-left">
+      <label>工程清单 <input id="candidateManifest" value="cpp_project/project.json" spellcheck="false"/></label>
+      <label>目标 C++ 文件 <input id="candidateTarget" value="cpp_project/ledger.cpp" spellcheck="false"/></label>
+      <div class="candidate-row"><button id="candidateLoad" class="tool secondary">读取当前源码</button><button id="candidateGenerate" class="tool secondary">连接模型生成</button></div>
+      <div id="providerInfo" class="candidate-caption">模型连接：未检查</div>
+      <label>候选代码（仅暂存，不会自动运行）<textarea id="candidateCode" spellcheck="false" placeholder="在此粘贴 AI 给出的完整 C++ 文件，或通过显式确认调用已配置的模型。"></textarea></label>
+      <button id="candidateStage" class="tool primary">① 创建不可变候选</button>
+      <div class="candidate-caption">使用既有工程清单的真实编译/测试目标。仅允许修改已经列入该清单并参与测试的 .cpp 文件。</div>
+    </section><section class="candidate-right">
+      <div class="candidate-section-title">候选记录 <button id="candidateReload" class="tool secondary">刷新</button></div>
+      <div id="candidateList" class="candidate-list"><div class="candidate-caption">暂无候选。</div></div>
+      <div class="candidate-section-title">候选详情 / 审查</div>
+      <div id="candidateDetails" class="candidate-caption">选择一条候选记录。</div>
+      <div class="candidate-row candidate-actions"><button id="candidateReview" class="tool secondary" disabled>② 人工批准</button><button id="candidateApply" class="tool secondary" disabled>③ 应用源码</button><button id="candidateValidate" class="tool primary" disabled>④ 验证 + Gate</button></div>
+      <div class="candidate-section-title">原始源码 / 候选代码</div><div class="candidate-diff"><div><span>BEFORE</span><pre id="candidateBefore"></pre></div><div><span>PROPOSAL</span><pre id="candidateAfter"></pre></div></div>
+      <div class="candidate-caption" id="candidateOutcome">准入状态：尚未验证</div>
+    </section></div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+<script src="/candidates.js" defer></script>
+<script src="/workorders.js" defer></script>
+<script src="/projects.js" defer></script>
+<script src="/launchpad.js" defer></script>
+<script src="/cockpit.js" defer></script>
+<script src="/app.js" defer></script>
+</body></html>

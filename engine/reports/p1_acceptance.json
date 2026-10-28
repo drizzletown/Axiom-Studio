@@ -1,0 +1,46 @@
+{
+  "project": "Axiom",
+  "architecture_baseline": "AX-HLD-1.0",
+  "theory_baseline": "AX-BL-0.2",
+  "milestone": "P1 scoped C++ runtime evidence prototype",
+  "date": "2026-10-25",
+  "model": {
+    "outcome": "Bounded",
+    "states": 4
+  },
+  "candidate": {
+    "outcome": "Tested",
+    "source_digest": "sha256:b3241c0c7e5792fef0ad05c958e743010e4fa976960931c7f7e1797bc95ee935",
+    "binding_digest": "sha256:2ddfe080d67d180ba2111f5791a9e132f3b018dee3d7343d013b77c394c4bc0d",
+    "config_digest": "sha256:258f7a09ed20a25d9bf378a95062df4b5438e7d9d163bfacec8a313b39fed846",
+    "normal_binary_digest": "sha256:06199fe03538ab9aafc9dd59bea15bedd6e48769851fb2f2577894fbfa6f084b",
+    "sanitized_binary_digest": "sha256:04a6a87a723060dab0f5dbda32c9505207fcf19b49d06479036ad714d2d7a6cf",
+    "pairs": 16,
+    "per_binary_calls": 32
+  },
+  "gate": {
+    "decision": "Approved",
+    "target": "cpp-tested-prototype",
+    "assurance": "Tested"
+  },
+  "faults": {
+    "broken_mapping": "E_CPP_REFINEMENT_MISMATCH",
+    "broken_boundary": "E_CPP_REFINEMENT_MISMATCH",
+    "broken_overflow": "E_CPP_SANITIZER_OR_CRASH",
+    "broken_frozen_input": "E_CPP_REFINEMENT_MISMATCH",
+    "broken_compile": "E_CPP_BUILD"
+  },
+  "invalidated_by_flags": "Blocked",
+  "tests": {
+    "passed": 36,
+    "total": 36,
+    "command": "PYTHONPATH=src python -m pytest -q"
+  },
+  "limitations": [
+    "finite single-thread synchronous sample observations, not a refinement proof",
+    "not a production-level isolation boundary",
+    "no guarantee for arbitrary call order or hidden state",
+    "no trusted provenance/authenticated approval",
+    "no persistent or distributed semantics"
+  ]
+}

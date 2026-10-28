@@ -1,0 +1,105 @@
+{
+  "run_id": "batch-743ebd003e153b40",
+  "status": "needs_attention",
+  "summary": {
+    "blocked": 1,
+    "completed": 3,
+    "cpp_executed": false,
+    "failed": 0,
+    "interrupted": 0,
+    "passed": 2,
+    "release_approved": false,
+    "requested": 3,
+    "scope": "model-only",
+    "stale": 0
+  },
+  "items": [
+    {
+      "project_id": "wf-01ec9595c24d7f83b5ff0",
+      "status": "passed",
+      "steps": [
+        {
+          "action": "check",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "plan",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "verify",
+          "error": null,
+          "outcome": "Bounded",
+          "returncode": 0
+        },
+        {
+          "action": "gate",
+          "error": null,
+          "outcome": "Approved",
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "project_id": "wf-58c52e5699c440a30a140",
+      "status": "passed",
+      "steps": [
+        {
+          "action": "check",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "plan",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "verify",
+          "error": null,
+          "outcome": "Bounded",
+          "returncode": 0
+        },
+        {
+          "action": "gate",
+          "error": null,
+          "outcome": "Approved",
+          "returncode": 0
+        }
+      ]
+    },
+    {
+      "project_id": "wf-e9ec351a9924c8019dba0",
+      "status": "blocked",
+      "steps": [
+        {
+          "action": "check",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "plan",
+          "error": null,
+          "outcome": null,
+          "returncode": 0
+        },
+        {
+          "action": "verify",
+          "error": null,
+          "outcome": "Violated",
+          "returncode": 2
+        }
+      ]
+    }
+  ],
+  "assurance": "model-bounded/test-level only",
+  "require_human_review": true,
+  "cpp_executed": false
+}

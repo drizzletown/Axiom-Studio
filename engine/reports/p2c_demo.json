@@ -1,0 +1,50 @@
+{
+  "project": "Axiom P2c",
+  "stage": "finite synchronized abstract products",
+  "good": {
+    "initial_gate": "Blocked",
+    "local_only_gate": "Blocked",
+    "product_evidence": "sha256:a4a7281a11dba89bf6c456f7233452acbd16fcc8804bbebed44640389a8853f9",
+    "product_outcome": "Bounded",
+    "product_gate": "Approved",
+    "reachable_product_states": 2
+  },
+  "broken": {
+    "isolated_models": {
+      "Source": "Bounded",
+      "Mirror": "Bounded"
+    },
+    "product_outcome": "Violated",
+    "reason": "E_PRODUCT_PROPERTY",
+    "counterexample": [
+      {
+        "kind": "initial",
+        "state": {
+          "Mirror.on": false,
+          "Source.on": false
+        }
+      },
+      {
+        "sync": [
+          "Source.set",
+          "Mirror.set"
+        ],
+        "input": {
+          "desired": false
+        },
+        "outputs": {
+          "Source": true,
+          "Mirror": true
+        },
+        "state": {
+          "Mirror.on": true,
+          "Source.on": false
+        }
+      }
+    ],
+    "gate": "Blocked"
+  },
+  "integrity_audit": "Consistent",
+  "audited_product_runs": 2,
+  "claim_boundary": "Finite two-component synchronized abstract behavior only. No arbitrary interleavings, C++ composition proof or secure untrusted-code execution."
+}

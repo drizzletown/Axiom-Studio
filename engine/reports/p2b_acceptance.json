@@ -1,0 +1,8 @@
+{
+  "automated_tests": 77,
+  "compose_before_exit": 4,
+  "compose_before": "Blocked",
+  "compose_after": "Ready",
+  "audit": "Consistent",
+  "sequential_revisions": 12
+}

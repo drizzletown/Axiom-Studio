@@ -1,0 +1,70 @@
+{
+  "test_count": 20,
+  "test_passed": 20,
+  "smoke": "passed",
+  "model_check": "Bounded",
+  "model_scope": {
+    "execution_model": "synchronous-action-boundaries",
+    "finite_reachable_exhaustion": true,
+    "input_domains": {
+      "move": {
+        "m": {
+          "kind": "Int",
+          "max": 3,
+          "min": 0
+        }
+      }
+    },
+    "max_states": 50000,
+    "max_transitions": 250000,
+    "semantics": "ax-sem/0.1",
+    "state_domain": {
+      "a": {
+        "kind": "Int",
+        "max": 3,
+        "min": 0
+      },
+      "b": {
+        "kind": "Int",
+        "max": 3,
+        "min": 0
+      }
+    },
+    "timeout_seconds": 30
+  },
+  "model_statistics": {
+    "checked_transitions": 212,
+    "initial_states": 1,
+    "reachable_states": 4
+  },
+  "bad_model_check": "Violated",
+  "bad_model_counterexample": [
+    {
+      "kind": "initial",
+      "state": {
+        "a": 3,
+        "b": 0
+      }
+    },
+    {
+      "action": "move",
+      "input": {
+        "m": 1
+      },
+      "result": true,
+      "state": {
+        "a": 3,
+        "b": 1
+      }
+    }
+  ],
+  "gate_model": "Approved",
+  "gate_cpp": "Blocked",
+  "semantic_change_stales_evidence": true,
+  "source_based_on": "AX-HLD-1.0, AX-BL-0.2",
+  "known_limitations": [
+    "No C++ refinement or real implementation verification",
+    "No trusted OS-level isolation or signed provenance",
+    "No concurrent/liveness/real-time properties"
+  ]
+}

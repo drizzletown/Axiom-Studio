@@ -1,0 +1,25 @@
+{
+  "release": "Axiom Studio 0.8.0",
+  "date": "2026-10-28",
+  "tested_groups": {
+    "V08_new": 10,
+    "V07_launch_orchestrator": 22,
+    "production_factory_http": 18,
+    "batches_http": 8
+  },
+  "total_selected_tests_passed": 58,
+  "independent_engine_demo": {
+    "projects": 3,
+    "passed": 2,
+    "blocked": 1,
+    "status": "needs_attention"
+  },
+  "javascript_syntax": "node --check studio/static/launchpad.js passed",
+  "not_claimed": [
+    "Full historical engine regression",
+    "production trust or malicious C++ isolation",
+    "multi-agent autonomous construction",
+    "formal refinement proof"
+  ],
+  "limit": "Local single-server model-only batch, test-level prototype, unsigned handoff"
+}

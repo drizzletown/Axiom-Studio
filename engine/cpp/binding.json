@@ -1,0 +1,12 @@
+{
+  "binding_schema":"ax-cpp-binding/0.1",
+  "model":"TwoAccount",
+  "action":"move",
+  "entrypoint":"axiom_move",
+  "protocol":"ax-line-i64-bool/1",
+  "state_map":{"a":"a","b":"b"},
+  "input_map":{"m":"m"},
+  "output_map":"success",
+  "assumptions":["single synchronous pure transition function","finite enumerated domain","no hidden effects claimed","signed 64-bit arguments represent finite model values"],
+  "known_gaps":["No C++ refinement theorem","No concurrent or persisted state","Not a secure untrusted-code execution sandbox","Finite fixed test sequence cannot prove behavior for all execution histories"]
+}

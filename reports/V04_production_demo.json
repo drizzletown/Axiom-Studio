@@ -1,0 +1,15 @@
+{
+  "schema": "ax-production-demo/0.4",
+  "contract_digest": "sha256:8eea0cdfc2b06c4f0d2bc97e91ea1776f36ff25cbb59267a7b1f425caf04647e",
+  "model_gate": "Approved",
+  "model_checked": true,
+  "requirements": 2,
+  "trace_edges": 9,
+  "task_digest": "sha256:ee3fd7547fa388132b76984d34aaf204dfc81c5940db6c0d50305d764d03914a",
+  "blocked_without_cpp_evidence": true,
+  "blockers": [
+    "HUMAN_ACCEPTANCE_AND_CPP_GATE_REQUIRED"
+  ],
+  "audit_valid": true,
+  "production_release": false
+}

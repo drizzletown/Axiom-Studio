@@ -1,0 +1,46 @@
+{
+  "baseline_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+  "extended_digest": "sha256:578fa06135b4e86972e72543b09ae385488f0be5684ffb5acb101ea28448dd27",
+  "baseline_run": "run-3b8c4e2a2d214daf8df9",
+  "extension_run": "run-3beada80009f421cb0d8",
+  "baseline_gate": "Approved",
+  "property_addition": {
+    "behavior_unchanged": true,
+    "reusable_properties": [
+      "Conservation",
+      "NonNegative"
+    ],
+    "before_decision": "Blocked",
+    "before_missing": [
+      "TwoAccount/model/property/BalanceBound"
+    ],
+    "reused_by_before": {
+      "TwoAccount/model/property/NonNegative": "run-3b8c4e2a2d214daf8df9",
+      "TwoAccount/model/property/Conservation": "run-3b8c4e2a2d214daf8df9",
+      "TwoAccount/model/action/move/cases": "run-3b8c4e2a2d214daf8df9",
+      "TwoAccount/model/action/move/transition_total": "run-3b8c4e2a2d214daf8df9",
+      "TwoAccount/model/action/move/type_frame": "run-3b8c4e2a2d214daf8df9"
+    },
+    "after_decision": "Approved"
+  },
+  "action_change": {
+    "behavior_unchanged": false,
+    "affected_nodes": [
+      "action/move",
+      "property/BalanceBound",
+      "property/Conservation",
+      "property/NonNegative"
+    ],
+    "gate": "Blocked",
+    "missing": [
+      "TwoAccount/model/action/move/cases",
+      "TwoAccount/model/action/move/transition_total",
+      "TwoAccount/model/action/move/type_frame",
+      "TwoAccount/model/property/BalanceBound",
+      "TwoAccount/model/property/Conservation",
+      "TwoAccount/model/property/NonNegative"
+    ]
+  },
+  "cpp_gate_without_cpp_evidence": "Blocked",
+  "scope": "Only local trusted P2 bounded model-evidence reuse, not verified C++ refinements"
+}

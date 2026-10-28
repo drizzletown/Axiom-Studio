@@ -1,0 +1,18 @@
+{
+  "schema": "ax-v0.4-acceptance/1",
+  "product_version": "0.4.0",
+  "focused_python_tests": 12,
+  "focused_http_tests": 1,
+  "total_focused_passed": 13,
+  "real_demo_report": "reports/V04_production_demo.json",
+  "legacy_regression": "not fully passed: pre-existing long-running model workflow timeout",
+  "release_scope": "cpp-tested-prototype only; not production safe",
+  "limitations": [
+    "untrusted C++ sandbox incomplete",
+    "no formal refinement proof",
+    "requirements/property semantic adequacy needs human validation",
+    "local hash chain not external cryptographic signature"
+  ],
+  "clean_extracted_focused_tests": "13/13 passed",
+  "clean_extracted_demo": "incomplete (timeout); not counted as passed"
+}

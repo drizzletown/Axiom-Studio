@@ -1,0 +1,16 @@
+{
+  "version": "0.9.0",
+  "correct": {
+    "outcome": "Tested",
+    "gate": "Approved",
+    "tsan_histories": 24,
+    "release_authorized": false
+  },
+  "data_race": {
+    "outcome": "Violated",
+    "reason": "E_STRESS_DATA_RACE",
+    "gate": "Blocked"
+  },
+  "seed_change_gate": "Blocked",
+  "scope": "observed native-thread schedules + TSAN only, not C++ formal proof or production release"
+}

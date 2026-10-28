@@ -1,0 +1,73 @@
+{
+  "assessment_digest": "sha256:826c637c0cd81c2473498a41afb1a7d8cb26ee03de0ee6a6491ac17cbcf0992b",
+  "components": {
+    "Toggle": {
+      "assurance": "None",
+      "covered_by_run": {},
+      "local_gate_decision": "Blocked",
+      "missing_obligations": [
+        "Toggle/model/action/set/cases",
+        "Toggle/model/action/set/transition_total",
+        "Toggle/model/action/set/type_frame",
+        "Toggle/model/property/StableType"
+      ],
+      "model_digest": "sha256:11f8f16f039d64fe7d556888f565b39f9cb8786a31e231cde88591ad2c591822",
+      "required_obligation_count": 4
+    },
+    "TwoAccount": {
+      "assurance": "None",
+      "covered_by_run": {},
+      "local_gate_decision": "Blocked",
+      "missing_obligations": [
+        "TwoAccount/model/action/move/cases",
+        "TwoAccount/model/action/move/transition_total",
+        "TwoAccount/model/action/move/type_frame",
+        "TwoAccount/model/property/Conservation",
+        "TwoAccount/model/property/NonNegative"
+      ],
+      "model_digest": "sha256:0820bf42f40a524117c1845e1df1de8d8c2d69d4d76ce306646f058d3c5ddd0f",
+      "required_obligation_count": 5
+    }
+  },
+  "decision": "Blocked",
+  "dependencies": [
+    {
+      "consumer": "Toggle",
+      "property": "Conservation",
+      "provider": "TwoAccount"
+    }
+  ],
+  "manifest_digest": "sha256:33b145321be9a5c2000715b4b52a67335e6ad5673f9f9ce5b1cfea2f7bf7f257",
+  "reasons": [
+    {
+      "code": "MISSING_LOCAL_MODEL_EVIDENCE",
+      "component": "TwoAccount",
+      "missing": [
+        "TwoAccount/model/action/move/cases",
+        "TwoAccount/model/action/move/transition_total",
+        "TwoAccount/model/action/move/type_frame",
+        "TwoAccount/model/property/Conservation",
+        "TwoAccount/model/property/NonNegative"
+      ]
+    },
+    {
+      "code": "MISSING_LOCAL_MODEL_EVIDENCE",
+      "component": "Toggle",
+      "missing": [
+        "Toggle/model/action/set/cases",
+        "Toggle/model/action/set/transition_total",
+        "Toggle/model/action/set/type_frame",
+        "Toggle/model/property/StableType"
+      ]
+    },
+    {
+      "code": "UNSATISFIED_PROVIDER_GUARANTEE",
+      "consumer": "Toggle",
+      "property": "Conservation",
+      "provider": "TwoAccount"
+    }
+  ],
+  "schema": "ax-composition-assessment/0.1",
+  "scope": "Independent finite abstract model checks and declared acyclic evidence dependencies only; no assume-guarantee proof, no cross-component runtime behavior, no C++ refinement, no sandbox and no production release",
+  "target": "abstract-model-evidence-integration-readiness"
+}

@@ -1,0 +1,22 @@
+{
+  "project": "Axiom Studio",
+  "version": "0.1.0",
+  "engine": "Axiom 1.0.0 P0-P2h",
+  "theory": "Axiom 0.2 frozen",
+  "scope": "Local browser-based IDE prototype",
+  "tests": {
+    "http_integration": "7/7 passed",
+    "native_cpp_project": "3 targets tested; local test gate Approved",
+    "negative_model": "Violated with counterexample",
+    "browser_ui_mocked_backend": "editor, verify view, AI handoff; no page errors",
+    "template": "new-file .ax parsed and bounded-verified"
+  },
+  "boundaries": {
+    "ai_inference_connected": false,
+    "automated_ai_editing": false,
+    "secure_untrusted_cpp_execution": false,
+    "production_release_authorized": false,
+    "general_cpp_refinement_proven": false,
+    "full_engine_regression_this_turn": false
+  }
+}

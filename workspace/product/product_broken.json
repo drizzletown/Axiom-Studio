@@ -1,0 +1,6 @@
+{
+ "schema": "ax-product-composition/0.1",
+ "components": [{"id":"Source","spec":"Source.ax"},{"id":"Mirror","spec":"MirrorBroken.ax"}],
+ "sync": [{"left":"Source.set","right":"Mirror.set","output_relation":"equal"}],
+ "properties": [{"name":"MirroredState","expr":{"op":"eq","args":[{"ref":"Source.on"},{"ref":"Mirror.on"}]}}]
+}

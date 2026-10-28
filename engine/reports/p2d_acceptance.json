@@ -1,0 +1,14 @@
+{
+  "phase": "P2d fourth batch",
+  "project_version": "0.6.0",
+  "date": "2026-10-25",
+  "baseline": "Axiom 0.2 frozen; HLD V1.0 unchanged",
+  "regression": {"existing": 96, "new": 25, "passed": 121, "failed": 0},
+  "finite_safe_interleaving": {"outcome": "Bounded", "global_states": 2, "checked_successor_candidates": 48},
+  "interleaving_counterexample": {"outcome": "Violated", "reason": "E_INTER_PROPERTY", "shortest_trace_steps_including_initial": 2},
+  "local_and_product_gate": "Approved only after all scoped model evidence present",
+  "detached_signature": "Ed25519 with externally pinned public key, independent replay required",
+  "untrusted_cpp_sandbox": "Not implemented; untrusted C++ remains blocked",
+  "cpp_refinement": "Not proved; previous P1 test-only level",
+  "production_release": "Not authorized"
+}

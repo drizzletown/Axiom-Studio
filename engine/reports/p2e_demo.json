@@ -1,0 +1,65 @@
+{
+  "schema": "ax-p2e-demo/0.1",
+  "initial_gate": "Blocked",
+  "results": {
+    "correct": {
+      "outcome": "Tested",
+      "reason": "P2E_FINITE_TRACE_AND_UBSAN_PASS",
+      "scenarios": 680,
+      "counterexample": null,
+      "gate": "Approved",
+      "release_authorized": false
+    },
+    "broken_one_side": {
+      "outcome": "Violated",
+      "reason": "E_TRACE_REFINEMENT_MISMATCH",
+      "scenarios": 680,
+      "counterexample": {
+        "mode": "normal",
+        "reason": "E_TRACE_REFINEMENT_MISMATCH",
+        "scenario": 1,
+        "step": 0,
+        "schedule": [
+          [
+            0,
+            1
+          ]
+        ],
+        "observed": [
+          1,
+          0,
+          1
+        ]
+      },
+      "gate": "Blocked",
+      "release_authorized": false
+    },
+    "broken_hidden_state": {
+      "outcome": "Violated",
+      "reason": "E_TRACE_REFINEMENT_MISMATCH",
+      "scenarios": 680,
+      "counterexample": {
+        "mode": "normal",
+        "reason": "E_TRACE_REFINEMENT_MISMATCH",
+        "scenario": 1,
+        "step": 0,
+        "schedule": [
+          [
+            0,
+            1
+          ]
+        ],
+        "observed": [
+          1,
+          0,
+          1
+        ]
+      },
+      "gate": "Blocked",
+      "release_authorized": false
+    }
+  },
+  "audit": "Consistent",
+  "evidence_records": 3,
+  "scope": "C++ deterministic atomic API schedules; not concurrent C++ proof"
+}
