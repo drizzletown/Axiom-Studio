@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio 2.0.1 · 可信软件生产</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/light.css"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio 2.0.2 · 软件生产流程</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/light.css"><link rel="stylesheet" href="/flow.css"></head>
 <body>
 <div class="studio">
   <header class="titlebar">
-    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">2.0.1</span></div>
+    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">2.0.2</span></div>
     <nav class="topnav"><button class="navitem" id="navProjects">项目全景</button><button class="navitem" id="navFile">文件</button><button class="navitem" id="navView">视图</button><button class="navitem" id="navVerify">验证</button></nav>
     <div class="title-center"><span class="tiny-circle"></span><span id="workspace-title">AXIOM / WORKSPACE</span><span class="title-chevron">⌄</span></div>
     <div class="title-actions"><button title="搜索文件 Ctrl+P" id="quickOpen" class="title-icon">⌕</button><button title="保存 Ctrl+S" id="topSave" class="title-icon">▣</button><button title="快速帮助" aria-label="快速帮助" id="helpButton" class="help-top-button">帮助 ?</button><div class="avatar">A</div></div>
@@ -58,6 +58,28 @@
       <div class="centerbody">
         <section class="editor-area" id="editorArea">
           <section id="projectDashboard" class="project-dashboard">
+            <section id="flowHome" class="flow-home" aria-label="软件生产主流程">
+              <header class="flow-header">
+                <div><span class="flow-overline">AXIOM STUDIO · SOFTWARE PRODUCTION</span><h1>从软件目标，到可信交付</h1><p>你负责目标和决定，AI 负责构造，系统负责独立验证。</p></div>
+                <button class="flow-text-button" type="button" id="flowToolsToggle">专业工具</button>
+              </header>
+              <nav class="flow-steps" id="flowSteps" aria-label="软件生产的五个阶段"></nav>
+              <section class="flow-work" aria-live="polite">
+                <div class="flow-work-head">
+                  <div><small id="flowPhaseNumber">第 1 步 / 共 5 步</small><h2 id="flowPhaseTitle">说出目标</h2><p id="flowPhaseSubtitle">先说清软件需要解决什么问题。</p></div>
+                  <label id="flowProjectPicker" class="flow-project-picker hidden">当前项目<select id="flowProjectSelect" aria-label="当前软件项目"></select></label>
+                </div>
+                <div id="flowStartStage" class="flow-stage"><div id="flowStartFormMount"></div></div>
+                <div id="flowGoalStage" class="flow-stage hidden"><div class="flow-goal-text"><small>软件目标</small><p id="flowGoalText"></p></div><button class="flow-main-action" id="flowGoalContinue" type="button">下一步：检查行为规则 →</button></div>
+                <div id="flowRulesStage" class="flow-stage hidden"><div id="flowPilotMount"></div></div>
+                <div id="flowBuildStage" class="flow-stage hidden"><div id="flowAssemblyMount"></div></div>
+                <div id="flowVerifyStage" class="flow-stage hidden"><div id="flowVerifyMount"></div></div>
+                <div id="flowDeliveryStage" class="flow-stage hidden"><div class="flow-goal-text"><small>当前交付状态</small><h3 id="flowDeliveryTitle">等待独立验证</h3><p id="flowDeliveryText"></p></div><button class="flow-main-action" id="flowDeliveryDetail" type="button">查看验证证据与项目记录 →</button></div>
+                <div id="flowError" class="flow-error hidden" role="alert"></div>
+              </section>
+              <footer class="flow-footer"><span id="flowFootNote">当前检查与准入均有明确范围，测试通过不等于生产发布。</span><button id="flowRefresh" type="button">刷新进度</button><button id="flowNewProject" type="button">新建项目</button></footer>
+              <details id="flowAdvanced" class="flow-advanced"><summary>高级功能与完整工程记录（需要时展开）</summary><div id="flowAdvancedMount"></div></details>
+            </section>
             <div class="project-intro"><div class="project-kicker">AXIOM STUDIO · TRUSTWORTHY SOFTWARE CONSTRUCTION</div>
               <div class="project-title-line"><div><h1>软件生产工作台</h1><p>从软件目标出发，构造方案，独立验证，持续改进。</p></div><button class="tool primary" id="projectNew">关联已有规格工程</button></div></div>
             <section class="journey" aria-label="从开发意图开始">
@@ -68,13 +90,13 @@
                   <div class="journey-pillbar"><span>你决定目标</span><span>AI 提供方案</span><span>证据支持判断</span></div>
                 </div>
                 <form id="journeyStartForm" class="journey-start-form" novalidate>
-                  <label for="journeyName">项目叫什么？</label><input id="journeyName" name="name" maxlength="100" required placeholder="例如：智能库存管理" value="我的第一个可信软件" />
+                  <label for="journeyName">项目叫什么？</label><input id="journeyName" name="name" maxlength="100" required placeholder="例如：库存管理系统" value="" />
                   <label for="journeyGoal">你希望软件完成什么？</label><textarea id="journeyGoal" name="goal" rows="3" maxlength="2000" required placeholder="例如：管理库存进出，不允许库存为负，记录每笔变化。"></textarea>
                   <label for="journeyScenario">用哪个小案例开始了解构造过程？</label>
                   <select id="journeyScenario" name="scenario">
                     <option value="model-toggle">最简单：开关状态，先体验行为验证</option>
                     <option value="model-ledger">账户守恒：学习规则与反例</option>
-                    <option value="cpp-ledger">真实 C++ 工程：体验完整构造链</option>
+                    <option value="cpp-ledger" selected>真实 C++ 工程：体验完整构造链</option>
                   </select>
                   <div class="journey-example" id="journeyExample">示例仅提供可检查的起点，不会自动证明你输入的全部目标。</div>
                   <button class="journey-create" id="journeyCreate" type="submit">建立我的软件构造项目 <span>→</span></button>
@@ -243,11 +265,13 @@
 </div></div>
 <div id="quickHelpOverlay" class="quick-help-overlay hidden" role="presentation">
   <section class="quick-help-dialog" role="dialog" aria-modal="true" aria-labelledby="quickHelpTitle">
-    <div class="quick-help-header"><div><span class="quick-help-kicker">快速上手 · 约 30 秒</span><h2 id="quickHelpTitle">Axiom Studio 怎么用？</h2></div><button type="button" id="quickHelpClose" class="quick-help-close" aria-label="关闭帮助">×</button></div>
+    <div class="quick-help-header"><div><span class="quick-help-kicker">快速上手 · 五步完成</span><h2 id="quickHelpTitle">Axiom Studio 怎么用？</h2></div><button type="button" id="quickHelpClose" class="quick-help-close" aria-label="关闭帮助">×</button></div>
     <div class="quick-help-steps">
-      <p><b>1. 说出目标</b><span>填写软件要实现的功能，创建项目。</span></p>
-      <p><b>2. 确认规则</b><span>查看验收场景与检查结果，确认软件必须遵守什么。</span></p>
-      <p><b>3. 构造并验证</b><span>让 AI 提出方案，人工审查后，由独立工具验证。</span></p>
+      <p><b>1. 目标</b><span>说清软件要做什么。</span></p>
+      <p><b>2. 规则</b><span>确认必须满足的行为。</span></p>
+      <p><b>3. 构造</b><span>AI 提方案，人来审查。</span></p>
+      <p><b>4. 验证</b><span>独立检查软件实现。</span></p>
+      <p><b>5. 交付</b><span>看证据，决定是否接受或演化。</span></p>
     </div>
     <p class="quick-help-note">代码编辑用 VS Code；验证通过不等于获得生产发布许可。</p>
     <div class="quick-help-actions"><button id="quickHelpDismiss" type="button" class="tool secondary">知道了</button><button id="quickHelpStart" type="button" class="tool primary">开始新项目</button></div>
@@ -266,5 +290,6 @@
 <script src="/journey.js" defer></script>
 <script src="/spec_workshop.js" defer></script>
 <script src="/design_review.js" defer></script>
+<script src="/flow.js" defer></script>
 <script src="/app.js" defer></script>
 </body></html>

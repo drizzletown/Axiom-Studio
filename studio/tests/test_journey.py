@@ -103,7 +103,7 @@ def test_authenticated_http_and_onboarding(local):
             created=json.load(r);assert r.status==201
         assert created['goal_status']=='recorded_unverified'
         assert get('/api/journey')['projects'][0]['next']['risk']=='model_only'
-        assert get('/health')['version']=='1.6.0'
+        assert get('/health')['version']==(STUDIO.parent/'VERSION').read_text(encoding='utf-8').strip()
         with urlopen(root+'/journey.js',timeout=15) as r:
             assert b'journeyStartForm' in r.read()
     finally:srv.shutdown();srv.server_close()

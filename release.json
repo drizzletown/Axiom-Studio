@@ -1,7 +1,7 @@
 {
   "schema": "ax-studio-release/1.0",
   "product": "Axiom Studio",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "released_on": "2026-10-29",
   "distribution": "local-source-release",
   "product_position": "AI-oriented software construction and trustworthy evolution orchestration; reuse VS Code",
@@ -11,10 +11,9 @@
   "scope": "trusted local prototype software-construction workflow, test-only Gates",
   "test_commands": [
     "python scripts/release_selftest.py",
-    "python -m pytest -q studio/tests/test_white_ui.py",
-    "python -m pytest -q studio/tests/test_milestone20.py -k \"not real_axiom\"",
+    "python -m pytest -q studio/tests/test_flow_ui.py studio/tests/test_white_ui.py",
     "python scripts/verify_distribution.py"
   ],
-  "release_focus": "Classic white UI, less cluttered intent-first homepage, short in-app help, unchanged Axiom verification and Gate semantics",
-  "notes": "UI patch only. Browser screenshots are static-layout previews; local Windows GUI and full historical integration regression not validated. Test-level Gate guarantees unchanged."
+  "release_focus": "Single coherent five-stage production workflow; one step at a time; quick five-step help; all original engine and secure Gate boundaries retained",
+  "notes": "UI workflow restructure. In-browser interaction tested with locally bridged real HTTP backend; native Windows user acceptance and complete historical C++ regression are not claimed."
 }

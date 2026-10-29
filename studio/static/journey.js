@@ -185,6 +185,7 @@
       const id=freezeProject;reviewClose();
       if(typeof selectProject==='function')await selectProject(id);
       await refresh();
+      if(typeof window.AxiomFlowOpen==='function')await window.AxiomFlowOpen(id);
       if(typeof wfNotify==='function')wfNotify(result.unmapped?'验收规则已冻结，但仍有 '+result.unmapped+' 项没有验证规则，准入将受阻。':'验收场景已冻结；继续构造候选并进行独立验证。');
     }catch(e){$('journeyReviewError').textContent='无法冻结：'+e.message}
     finally{button.disabled=false}
@@ -207,7 +208,7 @@
       if(typeof window.AxiomPilotOpen==='function')await window.AxiomPilotOpen(x.project.id);
       if(typeof selectProject==='function')await selectProject(x.project.id);
       if(typeof wfNotify==='function')wfNotify('已创建项目。当前先验证模板的行为规则，确认后才能作为正式验收依据。');
-      ($('pilotHome')||$('journeyProjects')).scrollIntoView({behavior:'smooth',block:'start'});
+      if(typeof window.AxiomFlowOpen==='function')await window.AxiomFlowOpen(x.project.id);else ($('pilotHome')||$('journeyProjects')).scrollIntoView({behavior:'smooth',block:'start'});
     }catch(error){msg(error.message)}finally{b.disabled=false}
   }
   document.addEventListener('DOMContentLoaded',()=>{

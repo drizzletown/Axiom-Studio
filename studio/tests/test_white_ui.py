@@ -67,8 +67,8 @@ class WhiteUIAcceptance(unittest.TestCase):
         self.assertIn('/light.css',parser.styles)
         self.assertIn('<details class="production-tools"',html)
         self.assertIn('quick-help-overlay hidden',html)
-        self.assertIn('1. 说出目标',html)
-        self.assertIn('3. 构造并验证',html)
+        self.assertIn('1. 目标',html)
+        self.assertIn('5. 交付',html)
         self.assertNotIn('STUDIO 1.8</span>',html)
 
     def test_03_private_html_remains_private(self):
@@ -88,7 +88,7 @@ class WhiteUIAcceptance(unittest.TestCase):
         import json
         status,body,_=self.get('/api/meta')
         self.assertEqual(status,200)
-        self.assertEqual(json.loads(body)['version'],'2.0.1')
-        self.assertEqual((STUDIO.parent/'VERSION').read_text('utf8').strip(),'2.0.1')
+        self.assertEqual(json.loads(body)['version'],'2.0.2')
+        self.assertEqual((STUDIO.parent/'VERSION').read_text('utf8').strip(),'2.0.2')
 
 if __name__=='__main__':unittest.main()

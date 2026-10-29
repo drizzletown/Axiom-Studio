@@ -46,7 +46,7 @@
     }
     if(p.next_action.id==='confirm_contract'||p.next_action.id==='construct'||p.next_action.id==='review_implementation'||p.next_action.id==='repair_spec'||p.next_action.id==='evolve'){
       const go=span('button','进入项目，处理这一步','tool primary');go.type='button';
-      go.onclick=()=>{if(p.next_action.id==='confirm_contract'&&typeof window.axiomJourneyOpenReview==='function')window.axiomJourneyOpenReview(p.project_id).catch(showError);else if(typeof selectProject==='function')selectProject(p.project_id);};buttons.append(go);
+      go.onclick=()=>{if(p.next_action.id==='confirm_contract'&&typeof window.axiomJourneyOpenReview==='function')window.axiomJourneyOpenReview(p.project_id).catch(showError);else if(typeof window.AxiomFlowSetStage==='function' && ['construct','review_implementation'].includes(p.next_action.id))window.AxiomFlowSetStage(2);else if(typeof window.AxiomFlowSetStage==='function'&&p.next_action.id==='evolve')window.AxiomFlowSetStage(4);else if(typeof selectProject==='function')selectProject(p.project_id);};buttons.append(go);
     }
     const trace=span('button','下载过程交接摘要','tool secondary');trace.type='button';
     trace.onclick=async()=>{try{const data=await api('/api/pilot/handoff?id='+encodeURIComponent(p.id));
@@ -56,6 +56,7 @@
     buttons.append(trace);next.append(buttons);
     const foot=span('p','保障范围：有限模型检查与经审查的本地测试；不会自动批准 AI 候选、运行 C++ 或签发正式发布许可。','pilot-warning');
     root.append(banner,steps,next,foot);
+    window.dispatchEvent(new CustomEvent('axiom:pilot-updated',{detail:{project_id:p.project_id,operation_state:p.operation_state}}));
   }
   async function poll(mid){for(let i=0;i<60;i++){
     await new Promise(resolve=>setTimeout(resolve,1200));

@@ -1,0 +1,1 @@
+{"cpp":{"requires_binding":true,"requires_implementation_evidence":true},"model":{"required_assurance":"Bounded","requires_exhaustion":true},"policy_id":"AX-P0-SAFE-DEFAULT","policy_version":"1"}

@@ -1,0 +1,87 @@
+/* Axiom Studio 2.0.2 | One process, one current step. Classic black on white. */
+body:has(#projectDashboard:not(.hidden)) .activity,
+body:has(#projectDashboard:not(.hidden)) .sidebar,
+body:has(#projectDashboard:not(.hidden)) .inspector,
+body:has(#projectDashboard:not(.hidden)) .bottom,
+body:has(#projectDashboard:not(.hidden)) .statusbar,
+body:has(#projectDashboard:not(.hidden)) .topnav,
+body:has(#projectDashboard:not(.hidden)) .title-actions .avatar{display:none!important}
+body:has(#projectDashboard:not(.hidden)) .main{min-width:0}
+body:has(#projectDashboard:not(.hidden)) .titlebar{height:62px;padding:0 clamp(22px,5vw,76px)}
+body:has(#projectDashboard:not(.hidden)) .title-actions{margin-left:auto}
+body:has(#projectDashboard:not(.hidden)) .project-dashboard{padding:0!important;background:#fff!important}
+#projectDashboard > .project-intro,#projectDashboard > .journey{display:none!important}
+.flow-home{max-width:1020px;margin:0 auto;padding:42px clamp(20px,3.5vw,52px) 65px;color:#161616;font-size:14px}
+.flow-header{display:flex;align-items:center;justify-content:space-between;gap:25px;margin:0 0 35px}
+.flow-header h1{font-size:31px;letter-spacing:-.8px;line-height:1.25;margin:8px 0 10px;font-weight:700;color:#171717}
+.flow-header p{font-size:14px;color:#505050;line-height:1.6;margin:0}
+.flow-overline{font-size:10px;font-weight:700;letter-spacing:1.7px;color:#777}
+.flow-text-button{border:1px solid #ccc;padding:9px 14px;white-space:nowrap;background:white;color:#303030;border-radius:5px;font-weight:600}
+.flow-text-button:hover{background:#f4f4f4}
+.flow-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid #d6d6d6;border-radius:9px;overflow:hidden;margin-bottom:28px;background:#fafafa}
+.flow-step{display:flex;gap:9px;align-items:center;justify-content:center;min-height:62px;border-right:1px solid #ddd;color:#656565;padding:12px 5px;font-size:14px;white-space:nowrap}
+.flow-step:last-child{border-right:0}
+.flow-step-index{border:1px solid #ccc;border-radius:50%;width:23px;height:23px;flex:none;display:grid;place-items:center;font-size:11px;background:#fff;color:#666;font-weight:600}
+.flow-step-name{font-weight:550}
+.flow-step.active{background:#222!important;color:#fff!important}
+.flow-step.active .flow-step-index{color:#222;border-color:#fff}
+.flow-step.done{color:#2f2f2f;background:#f3f3f3}
+.flow-step.done .flow-step-index{color:#222;border-color:#999}
+.flow-step:not(.active):hover{background:#ebebeb}
+.flow-work{border:1px solid #d6d6d6;background:#fff;border-radius:9px;min-height:350px;overflow:hidden}
+.flow-work-head{padding:28px 33px 23px;border-bottom:1px solid #ededed;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.flow-work-head small{font-size:12px;color:#777}
+.flow-work-head h2{font-size:24px;color:#1b1b1b;margin:5px 0 8px;font-weight:650}
+.flow-work-head p{font-size:13px;color:#5c5c5c;max-width:580px;line-height:1.65;margin:0}
+.flow-project-picker{font-size:12px;color:#5e5e5e;display:grid;gap:6px;min-width:195px;max-width:250px}
+.flow-project-picker select{font-size:13px;width:100%;color:#222;background:#fff;border:1px solid #bbb;border-radius:5px;padding:10px;min-height:38px}
+.flow-stage{padding:29px 33px 34px;min-height:240px}
+.flow-goal-text{padding:8px 0 30px;max-width:650px}
+.flow-goal-text small{font-size:12px;color:#666}
+.flow-goal-text p{font-size:17px;line-height:1.65;color:#222;overflow-wrap:anywhere;margin:10px 0 0}
+.flow-goal-text h3{font-size:18px;margin:10px 0 0;color:#222}
+.flow-main-action{background:#242424!important;color:#fff!important;font-size:14px;font-weight:650;border:1px solid #242424;border-radius:6px;padding:12px 20px}
+.flow-main-action:hover{background:#444!important}
+.flow-footer{display:flex;gap:19px;align-items:center;padding:18px 2px 12px;color:#6b6b6b;font-size:12px}
+.flow-footer span{margin-right:auto;line-height:1.7}
+.flow-footer button{padding:5px 0;border-bottom:1px solid #aaa;color:#333;white-space:nowrap}
+.flow-footer button:hover{border-color:#333}
+.flow-advanced{margin-top:18px;padding-top:10px;border-top:1px solid #e5e5e5;color:#555}
+.flow-advanced>summary{font-size:12px;cursor:pointer;padding:10px 1px;list-style:none}
+.flow-advanced>summary:before{content:'＋';margin-right:7px;color:#555}
+.flow-advanced[open]>summary:before{content:'−'}
+.flow-advanced #productionTools,.flow-advanced #journeyAdvanced{max-width:100%;margin-top:15px}
+.flow-advanced #productionTools>summary{font-size:12px}
+.flow-error{border:1px solid #d0b2b2;background:#fffafa;color:#802d2d;border-radius:5px;margin-top:15px;padding:12px}
+/* Re-home the existing functional controls without repeating their old headers and step diagrams. */
+.flow-home #journeyStartForm{width:100%;max-width:620px;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:#fff;display:grid;grid-template-columns:1fr;gap:9px}
+.flow-home #journeyStartForm label{display:block;margin-top:6px;font-size:13px;font-weight:650;color:#202020}
+.flow-home #journeyStartForm :is(input,textarea,select){width:100%;border:1px solid #bbb!important;background:#fff!important;color:#111!important;border-radius:5px;min-height:42px;padding:10px 12px;font-size:13px}
+.flow-home #journeyStartForm textarea{min-height:100px;resize:vertical}
+.flow-home #journeyStartForm .journey-example{font-size:12px;color:#666;background:#fafafa;border:0;padding:7px 0}
+.flow-home #journeyStartForm .journey-create{margin-top:10px;background:#252525!important;color:white!important;border:1px solid #252525!important;border-radius:6px;font-size:14px;font-weight:650;padding:13px 18px;max-width:360px}
+.flow-home #journeyStartForm .journey-subactions{display:flex;gap:14px;flex-wrap:wrap;font-size:12px}
+.flow-home #journeyStartForm .journey-subactions button{border-bottom:1px solid #aaa;color:#333}
+.flow-home #pilotHome,.flow-home #assemblyHome,.flow-home #milestone20Home{display:block!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important}
+.flow-home #pilotHome .pilot-head,.flow-home #pilotHome .pilot-select,.flow-home #pilotHome .pilot-summary,.flow-home #pilotHome .pilot-steps,.flow-home #pilotHome .pilot-warning{display:none!important}
+.flow-home #pilotHome .pilot-next{border:0!important;background:#fff!important;padding:6px 0!important}
+.flow-home #pilotHome .pilot-next small{font-size:12px;color:#666!important}
+.flow-home #pilotHome .pilot-next h3{font-size:20px;margin:10px 0 8px;color:#171717!important}
+.flow-home #pilotHome .pilot-next p{font-size:13px;line-height:1.65;color:#555!important}
+.flow-home #pilotHome .pilot-actions{display:flex;gap:12px;margin-top:20px}
+.flow-home #pilotHome .pilot-actions button:not(:first-child){background:#fff!important;color:#303030!important}
+.flow-home #assemblyHome .assembly-heading,.flow-home #milestone20Home .assembly-heading{display:none!important}
+.flow-home #assemblyHome .assembly-controls{margin:0 0 17px!important;align-items:end}
+.flow-home #assemblyHome #assemblyProject,.flow-home #assemblyHome label[for="assemblyProject"],.flow-home #milestone20Home #m20Project,.flow-home #milestone20Home label[for="m20Project"]{display:none!important}
+.flow-home #milestone20Home .assembly-controls{margin:0 0 18px!important}
+.flow-home #assemblyHome .assembly-body{border:0!important;padding:8px 0!important;background:#fff!important}
+.flow-home #assemblyHome .assembly-stages{display:none!important}
+.flow-home #assemblyHome .assembly-next{border-top:1px solid #e5e5e5!important;margin-top:15px;padding-top:20px}
+.flow-home #milestone20Home .graph-body{margin-top:15px!important}
+.flow-home :is(.tool.primary,.assembly-next .tool.primary,.assembly-controls .tool.primary){background:#242424!important;border-color:#242424!important;color:white!important}
+.flow-home :is(.tool.primary,.assembly-next .tool.primary):hover{background:#404040!important}
+.flow-home #assemblyHome .assembly-body p,.flow-home #milestone20Home .graph-body p{color:#454545!important}
+.flow-home #assemblyHome .assembly-next h3{font-size:20px;color:#171717}
+@media(max-width:760px){.flow-home{padding:22px 15px 35px}.flow-header{margin-bottom:22px}.flow-header h1{font-size:23px}.flow-steps{grid-template-columns:repeat(5,minmax(0,1fr))}.flow-step{flex-direction:column;min-height:67px;gap:5px;font-size:12px}.flow-work-head{padding:22px 18px;flex-direction:column;gap:14px}.flow-project-picker{max-width:100%;min-width:0;width:100%}.flow-stage{padding:22px 18px}.flow-footer{flex-wrap:wrap}.flow-footer span{width:100%}}
+
+body:has(#projectDashboard:not(.hidden)) .studio{min-width:0!important}
