@@ -1,0 +1,227 @@
+/* Axiom Studio 2.0.1 | Classic white interface.
+ * Presentation-only patch. Does not alter Axiom semantics, Gate or authorization.
+ * Kept separate from legacy styles to make this revision auditable and reversible.
+ */
+:root{
+  color-scheme:light;
+  --bg:#ffffff;--panel:#ffffff;--panel2:#f7f7f7;--panel3:#f1f1f1;
+  --line:#d9d9d9;--border:#d9d9d9;--muted:#5c5c5c;
+  --text:#1a1a1a;--accent:#262626;--bright:#222222;
+  --green:#24653c;--red:#a12c31;--amber:#79521b;
+  --surface:#fff;--card:#fff;
+}
+html,body,.studio{background:#fff!important;color:#171717!important;font-size:13px}
+button,input,select,textarea{font-family:var(--sans);}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{
+  outline:2px solid #222!important;outline-offset:2px!important;
+}
+button:disabled{opacity:.48}
+a{color:#222;text-underline-offset:2px}
+::selection{background:#dadada;color:#111}
+/* App chrome: subdued borders, white panels, no glowing accents. */
+.titlebar{height:51px;background:#fff!important;border-bottom:1px solid #d5d5d5!important;gap:12px;padding:0 18px}
+.brand{min-width:auto;gap:10px;color:#121212;font-size:16px;letter-spacing:0}
+.brand b span{color:#333}
+.brand-logo{width:29px;height:29px;border:1px solid #303030;background:#fff;color:#111;font-size:23px;border-radius:5px}
+.brand-version{font-size:11px;letter-spacing:0;color:#505050;border:1px solid #ccc;background:#fafafa;padding:5px 7px}
+.topnav{gap:7px;margin-left:18px}.topnav #navFile,.topnav #navView,.topnav #navVerify{display:none}
+.navitem{color:#333;font-size:13px;font-weight:550;padding:9px 12px}
+.navitem:hover,.title-icon:hover,.icon-only:hover{background:#eeeeee!important;color:#111!important}
+.title-center{display:none}
+.title-actions{margin-left:auto;gap:8px}.title-actions #quickOpen,.title-actions #topSave,.title-actions .avatar{display:none}
+.help-top-button{border:1px solid #c5c5c5;border-radius:6px;padding:8px 14px;background:#fff;color:#111;font-weight:600;font-size:13px}
+.help-top-button:hover{background:#ededed}
+.activity{width:47px;background:#f6f6f6!important;border-right:1px solid #dedede!important;padding-top:11px}
+.rail-btn{width:47px;height:45px;color:#595959!important}
+.rail-btn:hover{color:#111!important;background:#ebebeb!important}
+.rail-btn.active{color:#111!important;border-left-color:#1b1b1b!important;background:#e7e7e7!important}
+.sidebar{width:230px;min-width:200px;background:#fafafa!important;border-right:1px solid #dedede!important}
+.sidebar-title{color:#171717!important;border-bottom:1px solid #e1e1e1;font-size:12px;letter-spacing:.3px}
+.sidebar .section-row,.section-row b,.sidebar .caret{color:#343434!important}
+.project-sidebar-intro,.side-note,.sidebar-section,.sidebar-footer,.sidebar-footer #engine-indicator{color:#535353!important}
+.sidebar-footer{background:#fafafa;border-top-color:#dedede;font:10px var(--sans)}
+.project-sidebar-nav{color:#222!important;border-color:#ddd!important;background:#fff!important}
+.project-sidebar-nav:hover{background:#ebebeb!important}
+.project-sidebar-nav.primary{background:#222!important;color:#fff!important;border-color:#222!important}
+.project-sidebar-step{color:#424242!important}
+.side-divider{border-color:#e2e2e2!important}
+.main{background:#fff!important}
+.breadcrumb,.tab-strip,.toolbar{background:#fff!important;border-color:#ddd!important;color:#555!important}
+.breadcrumb strong{color:#111!important}.breadcrumb-end,.bc-sep{color:#666!important}
+.tab,.welcome-tab{background:#f8f8f8!important;color:#333!important;border-color:#ddd!important}
+.tab.active{background:#fff!important;border-top-color:#222!important;color:#111!important}
+.toolbar-label,.toolbar-dot{color:#222!important}.toolbar-dot{background:#555!important}
+.tool{border:1px solid #bcbcbc!important;background:#fff!important;color:#1d1d1d!important;font-size:12px!important;border-radius:6px}
+.tool.secondary{background:#fff!important;color:#222!important}
+.tool.primary{background:#232323!important;border-color:#232323!important;color:#fff!important;font-weight:600}
+.tool:hover:not(:disabled){filter:none!important;background:#ececec!important;color:#111!important}
+.tool.primary:hover:not(:disabled){background:#3a3a3a!important;color:#fff!important}
+.action-menu{background:#fff!important;border:1px solid #ccc!important;box-shadow:0 10px 35px #0002!important}
+.action-menu button{color:#222!important}.action-menu button:hover{background:#eee!important}
+.action-menu .menu-separator{background:#ddd!important}
+.editor-area,.inspector,.bottom,.tab-strip{background:#fff!important}
+.inspector{border-color:#ddd!important}.inspector-top{color:#222!important;border-color:#ddd!important}
+.inspector-label,.inspector-menu{color:#555!important}
+.outcome-icon.neutral,.outcome-icon.good,.outcome-icon.bad,.outcome-icon.warn{background:#f3f3f3!important;color:#111!important;border-color:#ccc!important}
+.bottom{border-color:#ccc!important}.bottom-tabs{border-color:#ddd!important}
+.bt,.bt span{color:#666!important}.bt.active{color:#111!important}.bt.active:after{background:#222!important}
+.console-content,.console-prompt,.console-hint{color:#272727!important}
+.console-content .log-good{color:#24653c!important}.console-content .log-bad{color:#9f2630!important}.console-content .log-info{color:#333!important}
+.statusbar{background:#f3f3f3!important;color:#222!important;border-top:1px solid #ddd}
+.status-right span:not(:last-child){border-color:#ccc!important}
+/* The home page shows two primary activities. Advanced work is discoverable, not dumped in a stack. */
+.main:has(#projectDashboard:not(.hidden)) .breadcrumb,
+.main:has(#projectDashboard:not(.hidden)) .tab-strip,
+.main:has(#projectDashboard:not(.hidden)) .toolbar{display:none!important}
+.project-dashboard{background:#fff!important;padding:23px clamp(20px,3vw,45px)!important;color:#111!important}
+.project-dashboard > .project-intro{display:none}
+.journey,.project-dashboard,.pilot-home,.graph-home,.assembly-home{color:#171717!important}
+.journey,.pilot-home,.production-tools,.journey-advanced{max-width:1170px;margin-left:auto!important;margin-right:auto!important}
+.journey{margin-top:0!important;margin-bottom:20px!important}
+.journey-hero{background:#fff!important;box-shadow:none!important;border:1px solid #d3d3d3!important;border-radius:11px!important;padding:25px!important;gap:25px!important}
+.journey-eyebrow,.project-kicker,.journey-copy h2 em{color:#333!important;letter-spacing:.35px}
+.journey-copy h2{font-size:clamp(23px,2.5vw,31px)!important;margin:9px 0 14px!important;line-height:1.34!important;color:#141414!important}
+.journey-copy>p,.project-title-line p,.journey-example,.journey-scope,.journey-labelrow p{color:#5b5b5b!important}
+.journey-copy>p{font-size:13px!important;line-height:1.8!important}
+.journey-pillbar{margin-top:18px!important}
+.journey-pillbar span{background:#f6f6f6!important;color:#343434!important;border:1px solid #ddd!important;border-radius:5px!important}
+.journey-start-form{background:#f8f8f8!important;border:1px solid #ddd!important;border-radius:9px!important;box-shadow:none!important;padding:18px!important}
+.journey-start-form label{color:#222!important}
+.journey-start-form input,.journey-start-form textarea,.journey-start-form select{
+  background:#fff!important;color:#111!important;border:1px solid #bdbdbd!important;border-radius:5px!important
+}
+.journey-start-form :is(input,textarea,select):focus-visible{box-shadow:0 0 0 2px #ddd!important;border-color:#222!important}
+.journey-create,.journey-next-button{background:#242424!important;color:#fff!important;border-radius:5px!important}
+.journey-create:hover,.journey-next-button:hover{background:#434343!important}
+.journey-subactions button{color:#333!important}
+.journey-labelrow{margin:18px 0 11px!important}.journey-labelrow h3{color:#181818}
+.journey-phase{background:#f9f9f9!important;color:#333!important;border-color:#d5d5d5!important;border-radius:6px!important;min-height:60px!important;padding:10px!important}
+.journey-phase strong,.journey-phase-no,.journey-phase-arrow{color:#292929!important}
+.journey-phase:hover,.journey-phase.active{background:#ececec!important;border-color:#888!important}
+.journey-explain{background:#f8f8f8!important;border:1px solid #ddd!important;border-top:0!important}
+.journey-explain b,.journey-explain p,.journey-explain-meta{color:#333!important}
+.journey-project,.journey-empty,.project-panel,.journey-next{
+  background:#fff!important;border:1px solid #d6d6d6!important;box-shadow:none!important;color:#111!important
+}
+.journey-project-heading h4,.journey-next b,.journey-empty strong{color:#111!important}
+.journey-project-heading small,.journey-project-goal,.journey-next p,.journey-empty p,.journey-next small{color:#555!important}
+.journey-tag,.journey-tag.progress,.journey-tag.tested,.journey-tag.needs-help,.journey-mini-step,
+.journey-mini-step.passed,.journey-mini-step.recorded,.journey-mini-step.blocked{
+  background:#f3f3f3!important;color:#222!important;border:1px solid #d7d7d7!important
+}
+.journey-alert,.journey-warning{background:#fff7eb!important;color:#6d4615!important;border:1px solid #ead4b0!important}
+.project-columns{gap:14px}.project-panel-head{background:#fafafa!important;color:#222!important;border-color:#ddd!important}
+.project-panel-head>span,.project-empty,.project-goal,.project-kv span:first-child{color:#555!important}
+.project-list-item{color:#222!important}.project-list-item:hover,.project-list-item.selected{background:#f2f2f2!important;border-color:#ccc!important}
+.project-list-item small,.project-kv code,.project-verdict,.project-events div{color:#333!important}
+.project-flow-steps span,.project-flow-steps span.current,.project-flow-steps span.complete{background:#f6f6f6!important;border-color:#ddd!important;color:#222!important}
+.project-verdict{background:#fafafa!important;border-color:#ddd!important}
+/* Project navigator is the primary next-step component. */
+.pilot-home{background:#fff!important;border:1px solid #d6d6d6!important;border-radius:11px!important;padding:20px!important;margin-top:18px!important}
+.pilot-head h2,.pilot-next h3,.assembly-heading h2{color:#161616!important}
+.pilot-head p,.pilot-summary p,.pilot-warning,.pilot-empty,.pilot-step small,.pilot-next p{color:#555!important}
+.pilot-select select,.assembly-controls select{background:#fff!important;color:#111!important;border:1px solid #bdbdbd!important;border-radius:5px}
+.pilot-empty,.pilot-step,.assembly-body{background:#fff!important;border-color:#d6d6d6!important;color:#333!important}
+.pilot-summary,.pilot-num,.pilot-next{background:#f7f7f7!important;border-color:#d1d1d1!important;color:#222!important}
+.pilot-next>small{color:#3f3f3f!important}
+.pilot-step.complete{border-left:3px solid #35694b!important;background:#f9f9f9!important}
+.pilot-step.blocked{border-left:3px solid #97612b!important;background:#fff!important}
+.pilot-step.running{border-left:3px solid #333!important;background:#fff!important}
+/* More tools are collapsed initially; keep existing DOM and IDs fully operational. */
+.production-tools{margin-top:16px!important;margin-bottom:15px!important;border:1px solid #d5d5d5;border-radius:9px;background:#fafafa}
+.production-tools>summary{cursor:pointer;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px;list-style:revert;font-size:13px;color:#161616}
+.production-tools>summary span{font-size:12px;color:#666;font-weight:400}
+.production-tools-body{padding:0 17px 17px;background:#fff;border-radius:0 0 9px 9px}
+.production-tools-body>.graph-home,.production-tools-body>.assembly-home{margin-top:14px!important;margin-bottom:0!important}
+.graph-home,.assembly-home,.fleet-section{background:#fff!important;border:1px solid #d6d6d6!important;color:#161616!important;box-shadow:none!important}
+.graph-module,.fleet-packet,.graph-items .graph-module{background:#fafafa!important;border-color:#d6d6d6!important;color:#222!important}
+.graph-module p,.assembly-heading p,.assembly-muted{color:#555!important}
+.assembly-stage{color:#333!important;border-color:#ccc!important}.assembly-stage.current{border-color:#222!important;background:#eee!important;color:#111!important}
+.assembly-next small,.assembly-error{color:#694322!important}
+.assembly-paste,.assembly-review{border-color:#ddd!important;background:#fff!important}
+.fleet-text{background:#fff!important;color:#111!important;border-color:#ccc!important}
+.journey-advanced{border-color:#ddd!important;margin-top:16px!important;padding:15px 0!important}
+.journey-advanced>summary,.journey-advanced>summary span{color:#424242!important}
+/* Files, inspector, dialogs and forms */
+.filter-wrap,.file-tree,.records{background:#fafafa!important;color:#333!important}
+.filter-wrap{border-color:#ccc!important}.filter-wrap input{color:#222!important}
+.tree-file,.tree-folder,.record b,.record small,.rec-status,.file-icon,.small-right{color:#303030!important}
+.tree-file:hover,.tree-file.selected,.tree-folder:hover,.record:hover{background:#ebebeb!important;color:#111!important}
+.pipe-row,.pipe-row b,.pipe-row small,.pipe-step,.pipe-arrow{color:#222!important}
+.pipe-row:hover{background:#f0f0f0!important;border-color:#ddd!important}
+.pipe-step{border-color:#bbb!important}
+.modal-overlay{background:rgba(0,0,0,.36)!important;backdrop-filter:none!important}
+.palette,.dialog,.ai-dialog,.project-create-dialog,.candidate-dialog,.spec-workshop-dialog{
+  background:#fff!important;color:#111!important;border:1px solid #c9c9c9!important;box-shadow:0 14px 44px #0003!important
+}
+.palette-top,.palette-item,.palette-foot,.palette-item span,.dialog p,.check-line,.ai-dialog p,.ai-badge,
+.project-create-dialog p,.project-create-dialog label,.candidate-caption,.spec-workshop-hint,.design-review-hint{color:#444!important}
+.palette-top,.palette-foot{border-color:#ddd!important}.palette-top input{color:#111!important}
+.palette-item:hover,.palette-item.selected{background:#f0f0f0!important;color:#111!important}
+.dialog h2,.ai-dialog h2,.project-create-dialog h2{color:#161616!important}
+.ai-dialog textarea,.project-create-dialog input,.project-create-dialog textarea,
+.spec-workshop-label textarea,.spec-workshop-label input,.spec-workshop-map select,
+.design-review-controls select,.journey-review-item textarea{
+  background:#fff!important;color:#111!important;border:1px solid #bbb!important
+}
+#toast{background:#fff!important;color:#111!important;border:1px solid #999!important;box-shadow:0 6px 18px #0002!important}
+.journey-review-item,.intent-goal,.intent-coverage,.intent-help,.intent-warning,.spec-workshop-summary,
+.spec-workshop-dialog details,.spec-workshop-review,.design-review,.design-review-card,.design-review-stat{
+  background:#fafafa!important;color:#222!important;border-color:#ddd!important;box-shadow:none!important
+}
+.journey-review-item strong,.journey-review-item small,.journey-review-confirm,.intent-help,.intent-goal strong,
+.design-review-content,.design-review-card strong,.design-review-tag{color:#222!important}
+.design-review-tag{border-color:#bfbfbf!important;background:#fff!important}
+.design-review-warn{background:#fff7eb!important;color:#694322!important;border-color:#b78d4d!important}
+#specWorkshopError,.journey-error{color:#a12c31!important}
+.spec-workshop-dialog pre,.candidate-diff pre{background:#f6f6f6!important;color:#171717!important;border-color:#ddd!important}
+/* HTML elements with no class-defined theme should also be readable. */
+#projectDashboard :is(input:not([type="checkbox"]),select,textarea),
+#candidateOverlay :is(input,select,textarea),
+#quickHelpOverlay :is(input,select,textarea){color:#111;background:#fff;border-color:#bdbdbd}
+#projectDashboard :is(p,small){line-height:1.65}
+#projectDashboard :is(h1,h2,h3,h4,strong){color:#1a1a1a}
+/* Consistent, short help is reachable from the top bar and left rail. */
+.quick-help-overlay{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.4)}
+.quick-help-dialog{background:#fff;color:#111;border:1px solid #d2d2d2;border-radius:11px;width:min(510px,100%);box-shadow:0 18px 58px #0003;padding:26px}
+.quick-help-header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.quick-help-header h2{font-size:21px;margin:5px 0 15px;color:#111}.quick-help-kicker{font-size:12px;color:#555}
+.quick-help-close{font-size:23px;width:32px;height:32px;color:#333;border:1px solid #ddd;border-radius:5px;background:#fff}
+.quick-help-close:hover{background:#eee}
+.quick-help-steps{border-block:1px solid #e4e4e4;padding:6px 0}
+.quick-help-steps p{margin:13px 0;display:grid;grid-template-columns:105px minmax(0,1fr);gap:10px;font-size:13px;line-height:1.55}
+.quick-help-steps p b{color:#111;font-weight:650}.quick-help-steps p span{color:#3f3f3f}
+.quick-help-note{font-size:12px;color:#555;line-height:1.7;margin:15px 0}
+.quick-help-actions{display:flex;justify-content:flex-end;gap:9px}
+/* Screen-size safety */
+.studio{min-width:730px!important}
+@media(max-width:1050px){.journey-hero{grid-template-columns:1fr!important}.journey-paradigm{grid-template-columns:repeat(3,minmax(0,1fr))}.journey-projects{grid-template-columns:1fr}}
+@media(max-width:850px){.sidebar{width:202px;min-width:202px}.project-dashboard{padding:16px!important}.journey-paradigm{grid-template-columns:repeat(2,minmax(0,1fr))}.production-tools>summary{align-items:flex-start;flex-direction:column;gap:4px}}
+/* Secondary editor remains usable but is no longer the product's primary screen. */
+.editor-frame,.editor-scroll,.code-stage,.welcome{background:#fff!important;color:#161616!important}
+.editor-topline{color:#555!important;border-color:#dedede!important;background:#fafafa!important}
+.editor-topline #editLang{color:#222!important}
+.line-nums{color:#888!important;background:#fafafa!important}
+.code-highlight{color:#222!important}
+.code-highlight .kw{color:#242424!important;font-weight:700!important}
+.code-highlight .bool,.code-highlight .num{color:#754e20!important}
+.code-highlight .name,.code-highlight .str{color:#235a38!important}
+.code-highlight .comment{color:#777!important}
+.code-highlight .sym{color:#444!important}
+#codeInput{caret-color:#111!important}
+#codeInput::selection{background:#d5d5d5!important}
+#codeInput::-webkit-scrollbar-thumb{background:#c6c6c6!important}
+.stats-grid>div,.counterexample-box,.gate-card,.onboarding{background:#fafafa!important;border-color:#d4d4d4!important;color:#222!important}
+.stats-grid span,.stats-grid b,.inspector-subhead,.inspector-subhead span,.obligation-row,.muted-small,
+.counter-empty,.gate-card span,.risk-note,.result-head small{color:#555!important}
+.inspector-subhead{border-color:#ddd!important}
+.counterexample-box.bad{border-color:#af7777!important;background:#fff8f8!important;color:#7d252b!important}
+.gate-indicator,.obligation-row i{color:#333!important}
+.welcome-kicker,.welcome h1 span,.welcome-desc,.ob-title,.ob-title span,.onboarding-steps span,
+.onboarding-steps small{color:#333!important}
+.welcome .big-cta{color:#fff!important;background:#222!important;box-shadow:none!important}
+.welcome .big-alt{color:#222!important;background:#fff!important;border-color:#ccc!important}
+.welcome .big-alt:hover{background:#eee!important}
+.hero-watermark{color:#11111109!important}
+.project-sidebar-step{border:0!important;padding:7px 12px!important}
+.project-sidebar-step b{color:#444!important}

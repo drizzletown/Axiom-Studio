@@ -284,12 +284,12 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path=urllib.parse.urlparse(self.path).path
         try:
-            if path=='/health':return self._json(200,{'service':'Axiom Studio','version':'2.0.0','local_only':True})
-            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css']:
+            if path=='/health':return self._json(200,{'service':'Axiom Studio','version':'2.0.1','local_only':True})
+            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css','/light.css']:
                 return self._send_file(STATIC/path[1:],'text/javascript; charset=utf-8' if path.endswith('.js') else 'text/css; charset=utf-8')
             if not self._authorized():return self._json(403,{'error':'请从启动终端给出的安全访问链接打开 IDE。'})
             if path in ['/','/index.html']:return self._send_file(STATIC/'index.html','text/html; charset=utf-8')
-            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css']:
+            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css','/light.css']:
                 return self._send_file(STATIC/path[1:],'text/javascript; charset=utf-8' if path.endswith('.js') else 'text/css; charset=utf-8')
             q=urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             if path=='/api/runner/export':
@@ -397,7 +397,7 @@ class Handler(BaseHTTPRequestHandler):
                   +'\n\n行为规格：\n'+raw)
                 return self._json(200,{'prompt':prompt,'spec_digest':plan['spec_digest'],'obligations':len(plan['obligations']),
                                        'generator_connected':False,'note':'仅生成审核任务包；未连接任何外部 AI 模型，也不会自动改写项目文件。'})
-            if path=='/api/meta':return self._json(200,{'version':'2.0.0','architecture':'workflow-first','engine_version':'1.0.0','workspace':str(WORKSPACE),'safe_cxx_execution':False,'files_count':len(tree())})
+            if path=='/api/meta':return self._json(200,{'version':'2.0.1','architecture':'workflow-first','engine_version':'1.0.0','workspace':str(WORKSPACE),'safe_cxx_execution':False,'files_count':len(tree())})
             return self._json(404,{'error':'Not found'})
         except (ConflictError,FlowConflict) as exc:return self._json(409,{'error':str(exc)})
         except (GuardError,ProposalError,FlowError,LaunchError,RunnerError,WorkOrderError,AssemblyError,TaskGraphError,FleetError,AgentForgeError,MilestoneError,ValueError,UnicodeError,OSError) as exc:return self._json(400,{'error':str(exc)})

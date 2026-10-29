@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio 1.8 · 从目标到可信软件</title><link rel="stylesheet" href="/styles.css"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio 2.0.1 · 可信软件生产</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/light.css"></head>
 <body>
 <div class="studio">
   <header class="titlebar">
-    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">STUDIO 1.8</span></div>
+    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">2.0.1</span></div>
     <nav class="topnav"><button class="navitem" id="navProjects">项目全景</button><button class="navitem" id="navFile">文件</button><button class="navitem" id="navView">视图</button><button class="navitem" id="navVerify">验证</button></nav>
     <div class="title-center"><span class="tiny-circle"></span><span id="workspace-title">AXIOM / WORKSPACE</span><span class="title-chevron">⌄</span></div>
-    <div class="title-actions"><button title="搜索文件 Ctrl+P" id="quickOpen" class="title-icon">⌕</button><button title="保存 Ctrl+S" id="topSave" class="title-icon">▣</button><button title="帮助" id="helpButton" class="title-icon">ⓘ</button><div class="avatar">A</div></div>
+    <div class="title-actions"><button title="搜索文件 Ctrl+P" id="quickOpen" class="title-icon">⌕</button><button title="保存 Ctrl+S" id="topSave" class="title-icon">▣</button><button title="快速帮助" aria-label="快速帮助" id="helpButton" class="help-top-button">帮助 ?</button><div class="avatar">A</div></div>
   </header>
   <div class="workbench">
     <aside class="activity">
@@ -25,8 +25,6 @@
         <button id="journeySideStart" class="project-sidebar-nav primary">＋ 从软件目标开始</button><button id="projectSidebarCreate" class="project-sidebar-nav">关联已有规格工程</button>
         <button id="projectSidebarOverview" class="project-sidebar-nav">◈ 查看工程全景</button>
         <div class="side-divider"></div>
-        <div class="section-row"><b>新软件开发方式</b></div>
-        <div class="project-sidebar-step"><b>①</b> 说出目标</div><div class="project-sidebar-step"><b>②</b> 明确规则</div><div class="project-sidebar-step"><b>③</b> 让 AI 构造</div><div class="project-sidebar-step"><b>④</b> 独立验证</div><div class="project-sidebar-step"><b>⑤</b> 做出决策并演化</div>
         <div class="side-divider"></div><p class="side-note">第三方编辑、Git 与调试：<b>VS Code</b>。这里不复制编辑器功能。</p>
       </section><section class="sidebar-section hidden" id="explorerView"><div class="section-row"><span class="caret">⌄</span><b>AXIOM WORKSPACE</b><span class="small-right" id="fileCount"></span></div><div class="filter-wrap"><span>⌕</span><input id="fileFilter" placeholder="筛选文件..." spellcheck="false"/></div><div id="fileTree" class="file-tree"></div></section>
       <section class="sidebar-section hidden" id="verifyView"><div class="section-row"><span class="caret">⌄</span><b>验证流水线</b></div><div class="pipeline">
@@ -41,7 +39,7 @@
       <div class="ai-tile"><div class="ai-tile-kicker">SPEC → CANDIDATE</div><h3>从规格出发</h3><p>自动组织当前规格、摘要和验证义务，形成可交给 AI 编程助手的受约束任务。</p><button id="aiTaskButton" class="tool primary">生成 AI 构造任务 ↗</button></div><div class="side-divider"></div><div class="candidate-tile"><div class="ai-tile-kicker">REVIEW-GATED CANDIDATES</div><h3>候选审查工作流</h3><p>从外部 AI 粘贴候选，或显式调用已配置模型。每次修改先人工审查、核对摘要，再手动应用和验证。</p><button id="candidateOpen" class="tool primary">打开候选工作台 ↗</button><button id="candidateRefresh" class="tool secondary">刷新记录</button><div id="candidateMiniList" class="candidate-mini"></div></div><div class="side-divider"></div><p class="side-note">候选先隔离暂存。模型只在用户明确授权后收到规格和源码；测试级 Gate 不构成生产发布许可。</p>
       </section>
       <section class="sidebar-section hidden" id="historyView"><div class="section-row"><b>最近任务</b><button id="reloadHistory" class="icon-only">↻</button></div><div id="historyList" class="records"></div></section>
-      <section class="sidebar-section hidden" id="helpView"><div class="section-row"><b>关于 Axiom Studio</b></div><p class="side-note">Axiom 是面向 AI 时代软件构造的行为规格与可信演化系统。</p><div class="side-divider"></div><p class="side-note">该 IDE 将编辑器、原模型引擎、真实 C++ 测试、反例、证据库及 Gate 集成在本机。当前仍为测试级原型。</p><div class="side-note">键盘快捷键：<kbd>Ctrl</kbd> + <kbd>S</kbd> 保存，<kbd>Ctrl</kbd> + <kbd>P</kbd> 打开文件，<kbd>Ctrl</kbd> + <kbd>Enter</kbd> 验证。</div></section>
+      <section class="sidebar-section hidden" id="helpView"><div class="section-row"><b>快速帮助</b></div><p class="side-note">① 描述目标并创建项目。<br>② 检查并确认验收规则。<br>③ AI 提方案，用户审查，独立验证。<br><br>代码编辑可使用 VS Code。</p></section>
       <div class="sidebar-footer"><span class="dot-green"></span> LOCAL ENGINE <span id="engine-indicator">CONNECTED</span></div>
     </aside>
     <main class="main">
@@ -96,6 +94,7 @@
               <div class="pilot-select"><label for="pilotProject">正在推进的软件</label><select id="pilotProject" aria-label="选择软件项目"></select><button type="button" class="tool primary" id="pilotBegin">开始生产导航</button></div>
               <div id="pilotContent" aria-live="polite" class="pilot-empty">选择已有项目并开始，或使用上方“从软件目标开始”创建项目。</div>
             </section>
+            <details class="production-tools" id="productionTools"><summary><b>更多生产工具</b><span>AI 构造 · 多模块协作 · 交付验证，按需展开</span></summary><div class="production-tools-body">
             <section class="graph-home" id="milestone20Home" aria-label="2.0 可信交付验证中心">
               <div class="assembly-heading"><div><span class="journey-eyebrow">AXIOM STUDIO 2.0 / MILESTONE RELEASE</span><h2>可信交付验证中心</h2><p>看清哪些工程内容发生变化、哪些测试需要重新执行。系统调用真实 Axiom 验证工具，不会自行把复用建议当作已通过证据。</p></div><button class="tool secondary" type="button" id="m20Refresh">刷新</button></div>
               <div class="assembly-controls"><label for="m20Project">要验证的软件项目</label><select id="m20Project"></select><button class="tool primary" type="button" id="m20Create">创建验证批次</button></div>
@@ -111,6 +110,7 @@
               <div class="assembly-controls"><label for="assemblyProject">要构造的软件</label><select id="assemblyProject" aria-label="构造目标项目"></select><label for="assemblyTarget">本次实现模块</label><select id="assemblyTarget" aria-label="构造的实现模块"></select><button type="button" class="tool primary" id="assemblyStart">开始 AI 构造</button></div>
               <div id="assemblyBody" aria-live="polite" class="assembly-body">请先完成软件规则的检查与人工确认；有 C++ 工程时，即可启动 AI 构造生产线。</div>
             </section>
+            </div></details>
             <details class="journey-advanced" id="journeyAdvanced"><summary>专业工具与完整项目记录 <span>需要时展开</span></summary><div class="journey-advanced-body">
             <section class="cockpit" aria-label="Axiom 1.0 软件生产总控台">
               <div class="cockpit-heading"><div><div class="project-kicker">AXIOM STUDIO / 专业总控台</div><h2>今日软件生产总控台</h2><p>统一查看规格、构造、独立验证、人工裁决与演化状态。这里只编排流程，不代替编译器或编辑器。</p></div><div class="launch-head-actions"><button id="cockpitRefresh" class="tool secondary">更新项目状态</button><button id="cockpitDoctor" class="tool secondary">环境诊断</button></div></div>
@@ -241,6 +241,18 @@
 <button class="tool primary" id="specWorkshopPromote" disabled>批准并创建演化项目</button><div id="specWorkshopError" role="alert"></div>
 </section></div></div>
 </div></div>
+<div id="quickHelpOverlay" class="quick-help-overlay hidden" role="presentation">
+  <section class="quick-help-dialog" role="dialog" aria-modal="true" aria-labelledby="quickHelpTitle">
+    <div class="quick-help-header"><div><span class="quick-help-kicker">快速上手 · 约 30 秒</span><h2 id="quickHelpTitle">Axiom Studio 怎么用？</h2></div><button type="button" id="quickHelpClose" class="quick-help-close" aria-label="关闭帮助">×</button></div>
+    <div class="quick-help-steps">
+      <p><b>1. 说出目标</b><span>填写软件要实现的功能，创建项目。</span></p>
+      <p><b>2. 确认规则</b><span>查看验收场景与检查结果，确认软件必须遵守什么。</span></p>
+      <p><b>3. 构造并验证</b><span>让 AI 提出方案，人工审查后，由独立工具验证。</span></p>
+    </div>
+    <p class="quick-help-note">代码编辑用 VS Code；验证通过不等于获得生产发布许可。</p>
+    <div class="quick-help-actions"><button id="quickHelpDismiss" type="button" class="tool secondary">知道了</button><button id="quickHelpStart" type="button" class="tool primary">开始新项目</button></div>
+  </section>
+</div>
 <div id="toast" role="status"></div>
 <script src="/candidates.js" defer></script>
 <script src="/workorders.js" defer></script>

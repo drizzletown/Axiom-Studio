@@ -55,7 +55,7 @@ def main():
             finally:studio.executor.shutdown(wait=False,cancel_futures=True)
         except Exception as e:
             checks['unexpected_exception']=type(e).__name__+': '+str(e)[:250]
-    result={'schema':'ax-studio-release-selftest/1.0','version':'2.0.0',
+    result={'schema':'ax-studio-release-selftest/1.0','version':'2.0.1',
             'checks':checks,'passed':sum(v is True for v in checks.values()),
             'total':len(checks),'all_passed':all(v is True for v in checks.values()),
             'elapsed_seconds':round(time.monotonic()-start,3),
