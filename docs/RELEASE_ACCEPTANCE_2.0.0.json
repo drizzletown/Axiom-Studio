@@ -1,0 +1,17 @@
+{
+  "schema": "ax-milestone20-release-acceptance/2.0",
+  "version": "2.0.0",
+  "date": "2026-10-29",
+  "tested": {
+    "new_boundary_api_group": "8/8 passed",
+    "new_real_cpp_incremental_group": "1/1 passed; first/full, same-input/cache, format-only/evolved tested",
+    "prior_1.9_selected_group": "2/2 passed",
+    "offline_selftest": "14/14 passed"
+  },
+  "known_failures": [
+    "All 9 new tests in one continuous process hung after 7 passed; separate groups passed. Legacy toolchain stability issue not closed.",
+    "No production-grade untrusted native code sandbox",
+    "No complete historical regression or Windows native GUI acceptance"
+  ],
+  "assurance": "trusted-local C++ test-level only; not production release"
+}

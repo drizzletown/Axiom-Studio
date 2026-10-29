@@ -28,6 +28,16 @@ from launchpad import Launchpad, LaunchError
 from production_runner import ProductionRunner, RunnerError
 from workorders import WorkOrders, WorkOrderError
 from cockpit import Cockpit
+from journey import Journey
+from intent_spec import IntentSpec
+from spec_workshop import SpecWorkshop
+from design_review import DesignReview
+from pilot import ProductionPilot, PilotError, PilotConflict
+from assembly import Assembly, AssemblyError
+from task_graph import TaskGraphs, TaskGraphError
+from fleet import ProductionFleet, FleetError
+from agent_forge import AgentForge, AgentForgeError
+from milestone20 import Milestone20, MilestoneError
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent
@@ -86,6 +96,16 @@ class Studio:
         self.production_runner=ProductionRunner(self)
         self.workorders=WorkOrders(self)
         self.cockpit=Cockpit(self)
+        self.journey=Journey(self)
+        self.intent_spec=IntentSpec(self)
+        self.spec_workshop=SpecWorkshop(self)
+        self.design_review=DesignReview(self)
+        self.pilot=ProductionPilot(self)
+        self.assembly=Assembly(self)
+        self.task_graphs=TaskGraphs(self)
+        self.fleet=ProductionFleet(self)
+        self.agent_forge=AgentForge(self)
+        self.milestone20=Milestone20(self)
 
     def start_job(self, action, relative=None, other=None, trusted=False, candidate=None):
         if action not in RUN_ACTIONS:raise GuardError('操作不在 IDE 白名单内')
@@ -238,7 +258,7 @@ class Studio:
         return {'runs':runs,'gates':gates}
 
 class Handler(BaseHTTPRequestHandler):
-    server_version='AxiomStudio/1.0'
+    server_version='AxiomStudio/2.0'
     def log_message(self,fmt,*args):
         pass
     def _json(self,status,obj):
@@ -264,12 +284,12 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path=urllib.parse.urlparse(self.path).path
         try:
-            if path=='/health':return self._json(200,{'service':'Axiom Studio','version':'1.0.0','local_only':True})
-            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/styles.css']:
+            if path=='/health':return self._json(200,{'service':'Axiom Studio','version':'2.0.0','local_only':True})
+            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css']:
                 return self._send_file(STATIC/path[1:],'text/javascript; charset=utf-8' if path.endswith('.js') else 'text/css; charset=utf-8')
             if not self._authorized():return self._json(403,{'error':'请从启动终端给出的安全访问链接打开 IDE。'})
             if path in ['/','/index.html']:return self._send_file(STATIC/'index.html','text/html; charset=utf-8')
-            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/styles.css']:
+            if path in ['/app.js','/candidates.js','/projects.js','/launchpad.js','/workorders.js','/cockpit.js','/journey.js','/spec_workshop.js','/design_review.js','/pilot.js','/assembly.js','/task_graph.js','/milestone20.js','/styles.css']:
                 return self._send_file(STATIC/path[1:],'text/javascript; charset=utf-8' if path.endswith('.js') else 'text/css; charset=utf-8')
             q=urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             if path=='/api/runner/export':
@@ -281,7 +301,35 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_header('Content-Disposition',f'attachment; filename={filename}')
                 self.send_header('Content-Length',str(len(raw)))
                 self.end_headers();self.wfile.write(raw);return
+            if path=='/api/milestone20/list':return self._json(200,self.server.studio.milestone20.list(q.get('project_id',[''])[0] or None))
+            if path=='/api/milestone20/get':return self._json(200,self.server.studio.milestone20.get(q.get('id',[''])[0]))
+            if path=='/api/milestone20/handoff':return self._json(200,self.server.studio.milestone20.handoff(q.get('id',[''])[0]))
+            if path=='/api/agents/get':return self._json(200,self.server.studio.agent_forge.get(q.get('id',[''])[0]))
+            if path=='/api/agents/list':return self._json(200,self.server.studio.agent_forge.list(q.get('graph_id',[''])[0]))
+            if path=='/api/fleet/get':return self._json(200,self.server.studio.fleet.get(q.get('id',[''])[0]))
+            if path=='/api/fleet/handoff':return self._json(200,self.server.studio.fleet.handoff(q.get('id',[''])[0]))
+            if path=='/api/task-graph/targets':return self._json(200,self.server.studio.assembly.targets(q.get('project_id',[''])[0]))
+            if path=='/api/task-graph/list':return self._json(200,self.server.studio.task_graphs.list(q.get('project_id',[''])[0] or None))
+            if path=='/api/task-graph/get':return self._json(200,self.server.studio.task_graphs.get(q.get('id',[''])[0]))
+            if path=='/api/task-graph/handoff':return self._json(200,self.server.studio.task_graphs.handoff(q.get('id',[''])[0]))
+            if path=='/api/assembly/targets':return self._json(200,self.server.studio.assembly.targets(q.get('project_id',[''])[0]))
+            if path=='/api/assembly/list':return self._json(200,self.server.studio.assembly.list(q.get('project_id',[''])[0] or None))
+            if path=='/api/assembly/get':return self._json(200,self.server.studio.assembly.get(q.get('id',[''])[0]))
+            if path=='/api/assembly/poll':return self._json(200,self.server.studio.assembly.poll(q.get('id',[''])[0]))
+            if path=='/api/assembly/handoff':return self._json(200,self.server.studio.assembly.handoff(q.get('id',[''])[0]))
+            if path=='/api/pilot/list':return self._json(200,self.server.studio.pilot.list())
+            if path=='/api/pilot/get':return self._json(200,self.server.studio.pilot.get(q.get('id',[''])[0]))
+            if path=='/api/pilot/audit':return self._json(200,self.server.studio.pilot.audit(q.get('id',[''])[0]))
+            if path=='/api/pilot/handoff':return self._json(200,self.server.studio.pilot.handoff(q.get('id',[''])[0]))
             if path=='/api/cockpit':return self._json(200,self.server.studio.cockpit.snapshot())
+            if path=='/api/design-review/inspect':return self._json(200,self.server.studio.design_review.inspect(q.get('id',[''])[0],q.get('candidate',[''])[0]))
+            if path=='/api/design-review/compare':return self._json(200,self.server.studio.design_review.compare(q.get('id',[''])[0],q.get('candidate',[])))
+            if path=='/api/spec-workshop/task':return self._json(200,self.server.studio.spec_workshop.task(q.get('id',[''])[0]))
+            if path=='/api/spec-workshop/list':return self._json(200,{'candidates':self.server.studio.spec_workshop.list(q.get('id',[''])[0])})
+            if path=='/api/spec-workshop/get':return self._json(200,self.server.studio.spec_workshop.get(q.get('candidate',[''])[0]))
+            if path=='/api/intent/plan':return self._json(200,self.server.studio.intent_spec.get(q.get('id',[''])[0]))
+            if path=='/api/intent/task':return self._json(200,self.server.studio.intent_spec.design_task(q.get('id',[''])[0]))
+            if path=='/api/journey':return self._json(200,self.server.studio.journey.snapshot())
             if path=='/api/doctor':return self._json(200,self.server.studio.cockpit.doctor())
             if path=='/api/workorders':return self._json(200,{'workorders':self.server.studio.workorders.list()})
             if path=='/api/workorder':return self._json(200,self.server.studio.workorders.get(q.get('id',[''])[0]))
@@ -349,10 +397,10 @@ class Handler(BaseHTTPRequestHandler):
                   +'\n\n行为规格：\n'+raw)
                 return self._json(200,{'prompt':prompt,'spec_digest':plan['spec_digest'],'obligations':len(plan['obligations']),
                                        'generator_connected':False,'note':'仅生成审核任务包；未连接任何外部 AI 模型，也不会自动改写项目文件。'})
-            if path=='/api/meta':return self._json(200,{'version':'1.0.0','architecture':'workflow-first','engine_version':'1.0.0','workspace':str(WORKSPACE),'safe_cxx_execution':False,'files_count':len(tree())})
+            if path=='/api/meta':return self._json(200,{'version':'2.0.0','architecture':'workflow-first','engine_version':'1.0.0','workspace':str(WORKSPACE),'safe_cxx_execution':False,'files_count':len(tree())})
             return self._json(404,{'error':'Not found'})
         except (ConflictError,FlowConflict) as exc:return self._json(409,{'error':str(exc)})
-        except (GuardError,ProposalError,FlowError,LaunchError,RunnerError,WorkOrderError,ValueError,UnicodeError,OSError) as exc:return self._json(400,{'error':str(exc)})
+        except (GuardError,ProposalError,FlowError,LaunchError,RunnerError,WorkOrderError,AssemblyError,TaskGraphError,FleetError,AgentForgeError,MilestoneError,ValueError,UnicodeError,OSError) as exc:return self._json(400,{'error':str(exc)})
     def do_POST(self):
         try:
             if not self._authorized():return self._json(403,{'error':'Unauthorized'})
@@ -360,6 +408,27 @@ class Handler(BaseHTTPRequestHandler):
             if n<=0 or n>MAX_JSON:raise GuardError('请求长度超限')
             data=json.loads(self.rfile.read(n))
             path=urllib.parse.urlparse(self.path).path
+            if path=='/api/milestone20/create':return self._json(201,self.server.studio.milestone20.create(data.get('project_id'),data.get('graph_id'),data.get('previous_id')))
+            if path=='/api/milestone20/start':return self._json(202,self.server.studio.milestone20.start(data.get('id'),data.get('trusted') is True))
+            if path=='/api/agents/batch':return self._json(201,self.server.studio.agent_forge.run_many(data.get('graph_id'),data.get('targets'),data.get('consent') is True,data.get('rounds',1),data.get('concurrency',2)))
+            if path=='/api/agents/run':return self._json(201,self.server.studio.agent_forge.run(data.get('graph_id'),data.get('target'),data.get('consent') is True,data.get('rounds',1),data.get('feedback')))
+            if path=='/api/agents/stage':return self._json(200,self.server.studio.agent_forge.stage(data.get('id'),data.get('candidate_sha256'),data.get('acknowledge') is True))
+            if path=='/api/agents/impact':return self._json(200,self.server.studio.agent_forge.impact(data.get('graph_id'),data.get('targets')))
+            if path=='/api/fleet/prepare':return self._json(201,self.server.studio.fleet.prepare(data.get('id'),data.get('parallelism',3)))
+            if path=='/api/fleet/stage':return self._json(201,self.server.studio.fleet.stage(data.get('id'),data.get('target'),data.get('code'),data.get('packet_digest')))
+            if path=='/api/fleet/promote':return self._json(200,self.server.studio.fleet.promote(data.get('id'),data.get('target'),data.get('candidate_sha256'),data.get('acknowledge_rebase') is True))
+            if path=='/api/fleet/feedback':return self._json(200,self.server.studio.fleet.feedback(data.get('id'),data.get('target')))
+            if path=='/api/task-graph/create':return self._json(201,self.server.studio.task_graphs.create(data.get('project_id'),data.get('tasks')))
+            if path=='/api/task-graph/start':return self._json(200,self.server.studio.task_graphs.start(data.get('id'),data.get('target')))
+            if path=='/api/task-graph/sync':return self._json(200,self.server.studio.task_graphs.sync(data.get('id')))
+            if path=='/api/assembly/create':return self._json(201,self.server.studio.assembly.create(data.get('project_id'),data.get('target')))
+            if path=='/api/assembly/candidate':return self._json(201,self.server.studio.assembly.candidate(data.get('id'),data.get('code'),data.get('consent') is True))
+            if path=='/api/assembly/review':return self._json(200,self.server.studio.assembly.review(data.get('id'),data.get('digest'),data.get('approved') is True))
+            if path=='/api/assembly/apply':return self._json(200,self.server.studio.assembly.apply(data.get('id'),data.get('confirmation')))
+            if path=='/api/assembly/verify':return self._json(202,self.server.studio.assembly.verify(data.get('id'),data.get('trusted') is True))
+            if path=='/api/assembly/revert':return self._json(200,self.server.studio.assembly.revert(data.get('id'),data.get('confirmation')))
+            if path=='/api/pilot/create':return self._json(201,self.server.studio.pilot.create(data.get('project_id')))
+            if path=='/api/pilot/advance':return self._json(202,self.server.studio.pilot.advance_safe(data.get('id'),data.get('revision'),data.get('baseline_digest')))
             if path=='/api/workorder/create':return self._json(201,self.server.studio.workorders.create(data.get('manifest'),data.get('target'),data.get('goal'),data.get('max_attempts',3)))
             if path=='/api/workorder/generate':return self._json(201,self.server.studio.workorders.generate(data.get('id'),data.get('consent')))
             if path=='/api/workorder/submit':return self._json(201,self.server.studio.workorders.submit(data.get('id'),data.get('code')))
@@ -373,6 +442,14 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(201,self.server.studio.production_runner.retry(data.get('id')))
             if path=='/api/runner/start':
                 return self._json(202,self.server.studio.production_runner.start(data.get('id')))
+            if path=='/api/spec-workshop/create':return self._json(201,self.server.studio.spec_workshop.create(data.get('id'),data.get('source'),data.get('notes','')))
+            if path=='/api/spec-workshop/generate':return self._json(201,self.server.studio.spec_workshop.generate(data.get('id'),data.get('consent')))
+            if path=='/api/spec-workshop/check':return self._json(200,self.server.studio.spec_workshop.assess(data.get('candidate')))
+            if path=='/api/spec-workshop/promote':return self._json(201,self.server.studio.spec_workshop.promote(data.get('candidate'),data.get('digest'),data.get('mappings'),data.get('confirmation')))
+            if path=='/api/intent/save':return self._json(200,self.server.studio.intent_spec.save(data.get('id'),data.get('items'),data.get('version'),data.get('baseline')))
+            if path=='/api/intent/confirm':return self._json(201,self.server.studio.intent_spec.confirm(data.get('id'),data.get('version'),data.get('digest'),data.get('confirmation')))
+            if path=='/api/journey/start':
+                return self._json(201,self.server.studio.journey.start(data.get('scenario'),data.get('name'),data.get('goal')))
             if path=='/api/launch/create':
                 return self._json(201,self.server.studio.launchpad.create(data.get('template'),data.get('slug'),data.get('name'),data.get('goal')))
             if path=='/api/batch/create':return self._json(201,self.server.studio.batches.create(data.get('project_id'),data.get('targets')))
@@ -467,7 +544,7 @@ class Handler(BaseHTTPRequestHandler):
             if path=='/api/run':return self._json(202,self.server.studio.start_job(data.get('action'),data.get('path'),data.get('other'),data.get('trusted',False) is True,data.get('candidate')))
             return self._json(404,{'error':'Not found'})
         except (ConflictError,FlowConflict) as exc:return self._json(409,{'error':str(exc)})
-        except (GuardError,ProposalError,FlowError,LaunchError,RunnerError,WorkOrderError,ValueError,TypeError,KeyError,UnicodeError,OSError) as exc:return self._json(400,{'error':str(exc)})
+        except (GuardError,ProposalError,FlowError,LaunchError,RunnerError,WorkOrderError,AssemblyError,TaskGraphError,FleetError,AgentForgeError,MilestoneError,ValueError,TypeError,KeyError,UnicodeError,OSError) as exc:return self._json(400,{'error':str(exc)})
 
 def create_server(port=8765):
     studio=Studio()

@@ -89,3 +89,159 @@ body:has(#projectDashboard:not(.hidden)) #statusLanguage{display:none}
 .cockpit-next:hover{background:#32425a}.cockpit-warning{color:#e2aaa7}.cockpit-empty{color:#a8b4c5;font-size:12px}
 @media(max-width:1050px){.cockpit-layout{grid-template-columns:1fr}.cockpit-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.cockpit-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.cockpit-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.cockpit-heading{flex-direction:column}}
+
+/* Axiom Studio 1.1 — Intent-first, understandable without product training. */
+.journey{margin:10px 0 26px;color:#e9f1ff}
+.journey-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.92fr);gap:28px;background:radial-gradient(circle at 18% 15%,rgba(83,108,210,.22),transparent 56%),linear-gradient(115deg,#1a2941,#101d2c);border:1px solid #476389;border-radius:18px;padding:clamp(20px,3vw,38px);box-shadow:0 20px 55px #070d1b44}
+.journey-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.journey-eyebrow{font-size:11px;letter-spacing:1.5px;color:#9bbef9;font-weight:650}
+.journey-copy h2{font-size:clamp(25px,2.9vw,38px);letter-spacing:-.7px;line-height:1.42;margin:18px 0 16px;font-weight:750}
+.journey-copy h2 em{color:#a8b5ff;font-style:normal}
+.journey-copy>p{max-width:540px;line-height:1.9;font-size:14px;color:#b5c7df}
+.journey-pillbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.journey-pillbar span{background:#243655;border:1px solid #3b567e;border-radius:50px;color:#c6d9f5;padding:8px 11px;font-size:11px}
+.journey-start-form{background:#111d30;border:1px solid #405579;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 24px #0003}
+.journey-start-form label{font-size:12px;font-weight:600;color:#deebff;margin-top:8px}
+.journey-start-form input,.journey-start-form textarea,.journey-start-form select{background:#0b1627;color:#f2f6ff;border:1px solid #566884;border-radius:8px;width:100%;padding:11px 12px;min-height:42px;font:13px/1.55 var(--sans);outline:none;box-sizing:border-box}
+.journey-start-form :is(input,textarea,select):focus-visible{border-color:#a4b6ff;box-shadow:0 0 0 3px #596fea55}
+.journey-start-form textarea{resize:vertical;min-height:89px}
+.journey-example{font-size:11px;line-height:1.6;color:#a7b9d4}
+.journey-create{background:#6576ea;color:white;font-size:13px;font-weight:700;padding:13px 16px;margin-top:9px;text-align:left;border-radius:8px;display:flex;align-items:center;justify-content:space-between;min-height:46px}
+.journey-create:hover{background:#7889f2}.journey-create:disabled{opacity:.5;cursor:wait}
+.journey-subactions{display:flex;justify-content:space-between;gap:12px}
+.journey-subactions button{text-decoration:underline;text-underline-offset:3px;color:#a7c3ff;font-size:11px;padding:9px 0}
+.journey-error{font-size:11px;color:#ffbbb1;line-height:1.6;min-height:0}
+.journey-labelrow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:25px 0 13px}
+.journey-labelrow h3{font-size:18px;margin:0 0 5px;font-weight:700}
+.journey-labelrow p{margin:0;font-size:12px;color:#9db0ca;line-height:1.7}
+.journey-paradigm{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.journey-phase{min-height:80px;display:flex;align-items:center;gap:8px;text-align:left;padding:15px 11px;border:1px solid #3c506c;border-radius:9px;background:#18273b;color:#b7c8e1}
+.journey-phase strong{font-size:12px;flex:1;color:#e2eaf7}
+.journey-phase:hover,.journey-phase:focus-visible{border-color:#91a7e0;background:#263955}
+.journey-phase.active{background:#293d5e;border-color:#a0b8ff}
+.journey-phase-no{font:10px var(--mono);color:#8fa9d7}
+.journey-phase-arrow{font-size:15px;color:#8ca4cb}
+.journey-explain{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #344963;border-top:0;background:#152236;padding:15px 17px;border-radius:0 0 10px 10px}
+.journey-explain b{font-size:12px;color:#e4efff}.journey-explain p{margin:6px 0 0;font-size:11px;line-height:1.6;color:#aabbd3}
+.journey-explain-meta{display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:170px;color:#a6c2e7;font-size:11px}
+.journey-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.journey-project,.journey-empty{border:1px solid #3b506a;background:#18283d;border-radius:12px;padding:20px;min-width:0}
+.journey-project-heading{display:flex;justify-content:space-between;gap:13px;align-items:start}
+.journey-project-heading small{font-size:11px;color:#9eafc8}.journey-project-heading h4{font-size:16px;margin:7px 0 0;color:#f1f5ff}
+.journey-tag{font-size:10px;padding:7px 9px;border-radius:20px;background:#34425a;color:#c3d1e6;white-space:nowrap}
+.journey-tag.tested{background:#234a3e;color:#ade9c5}.journey-tag.progress{background:#2a4262;color:#b7d2ff}.journey-tag.needs-help{background:#5c3b31;color:#ffc5b9}
+.journey-project-goal{color:#b7c9df;font-size:12px;line-height:1.7;margin:14px 0;min-height:35px;overflow-wrap:anywhere}
+.journey-project-steps{display:flex;flex-wrap:wrap;gap:5px}
+.journey-mini-step{font-size:10px;color:#aabbd2;border:1px solid #34465e;border-radius:5px;padding:5px 6px}
+.journey-mini-step.passed,.journey-mini-step.recorded{color:#91ddc1;border-color:#2d6557;background:#1a413a}
+.journey-mini-step.blocked{color:#ffadad;border-color:#774752;background:#412b31}
+.journey-next{background:#111d30;border:1px solid #344b67;border-radius:8px;margin-top:16px;padding:14px}
+.journey-next small{font-size:11px;color:#8fadcf;display:block}.journey-next b{display:block;font-size:14px;margin-top:6px;color:#f0f5ff}
+.journey-next p{font-size:11px;line-height:1.6;color:#9fbbdc;margin:7px 0 13px}
+.journey-next-button{background:#5c72dc;color:white;border-radius:7px;padding:10px 13px;font-size:12px;font-weight:600;min-height:40px}
+.journey-next-button:hover{background:#7188f0}
+.journey-empty{grid-column:1/-1;color:#c4d6f3;text-align:center;padding:26px}.journey-empty strong{font-size:16px}.journey-empty p{font-size:12px;color:#a8bddb;margin:10px 0 0}
+.journey-alert{margin-top:9px;padding:10px;color:#f2c09e;background:#402b29;border-radius:8px;font-size:12px}
+.journey-scope{font-size:11px;line-height:1.8;color:#a2b5ce;margin:15px 2px}
+.journey-advanced{margin-top:26px;border-top:1px solid #314863;padding:19px 0}
+.journey-advanced>summary{font-size:13px;color:#b9cae6;font-weight:600;cursor:pointer;list-style:revert}
+.journey-advanced>summary span{font-size:11px;color:#89a5c9;font-weight:400;margin-left:9px}
+.journey-advanced-body{padding-top:18px}
+.journey-review-dialog{max-height:min(83vh,800px);overflow-y:auto}
+.journey-review-items{max-height:42vh;overflow-y:auto;display:grid;gap:12px;margin:20px 0}
+.journey-review-item{display:flex;flex-direction:column;gap:6px;border:1px solid #405476;border-radius:8px;padding:12px;background:#102038}
+.journey-review-item strong{font-size:12px}.journey-review-item small{font-size:11px;color:#b8c8dd;line-height:1.6}
+.journey-review-item textarea{background:#091528;color:#e4edff;border:1px solid #4f6486;border-radius:6px;padding:10px;font-size:12px;width:100%;box-sizing:border-box}
+.journey-review-confirm{font-size:12px;color:#dae6f7;display:flex;align-items:start;gap:9px;line-height:1.7}
+.journey-review-confirm input{margin-top:4px}
+@media(max-width:1100px){.journey-hero{grid-template-columns:1fr}.journey-copy{max-width:none}.journey-projects{grid-template-columns:1fr}}
+@media(max-width:780px){.journey-paradigm{grid-template-columns:repeat(2,minmax(0,1fr))}.journey-explain{flex-direction:column;align-items:flex-start}.journey-explain-meta{align-items:flex-start}.journey-start-form{padding:15px}.journey-hero{padding:16px}}
+@media(prefers-reduced-motion:reduce){.journey *{scroll-behavior:auto}}
+
+/* Axiom Studio 1.2 — scenario-first acceptance authoring */
+.intent-dialog{width:min(940px,94vw);max-width:940px;max-height:92vh;overflow:auto}
+.intent-goal{background:#263a55;border:1px solid #536b92;border-radius:9px;padding:13px 15px;margin:13px 0;display:flex;flex-direction:column;gap:5px}
+.intent-goal small{color:#a6c2e3;font-size:11px}.intent-goal strong{color:#fff;font-size:14px;line-height:1.65}
+.intent-coverage{font-size:13px;font-weight:700;color:#b9d7ff;margin:13px 0 5px}
+.intent-warning{font-size:12px;line-height:1.65;color:#efc49b;background:#3c3028;border-radius:8px;padding:10px;margin:8px 0}
+.intent-scenario{padding:16px;gap:10px}.intent-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.intent-field{display:flex;flex-direction:column;gap:6px;color:#d6e8ff;font-size:12px;font-weight:600}
+.intent-field input,.intent-field textarea,.intent-field select,.intent-task{width:100%;background:#0a1628;border:1px solid #557099;color:#e5f1ff;border-radius:7px;padding:11px;font-size:13px;line-height:1.5;box-sizing:border-box}
+.intent-field select{min-height:40px}.intent-field input:focus-visible,.intent-field textarea:focus-visible,.intent-field select:focus-visible{outline:2px solid #9bb7fc}
+.intent-help{border-left:3px solid #7c94e0;padding:12px 15px;background:#21324b;margin:13px 0;color:#bcd0e9;font-size:12px;line-height:1.7}
+.intent-controls{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin:12px 0}
+.intent-task{margin:12px 0;min-height:140px;resize:vertical}
+.intent-dialog .journey-review-items{max-height:38vh;margin:12px 0}
+@media(max-width:650px){.intent-dialog{width:98vw;padding:15px}.intent-head{flex-wrap:wrap}.intent-controls{justify-content:stretch}.intent-controls button{flex:1}}
+/* Axiom 1.3 – plain-language, review-first specification workshop */
+.spec-workshop-dialog{background:var(--panel-bg,#101826);color:var(--text,#e2e8f0);width:min(1100px,95vw);max-height:94vh;display:flex;flex-direction:column;border:1px solid var(--border,#334155);border-radius:16px;box-shadow:0 24px 65px #0007;overflow:hidden}
+.spec-workshop-dialog>header{display:flex;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #47556955}
+.spec-workshop-dialog>header h2{font-size:21px;margin:6px 0}.spec-workshop-dialog>header p{font-size:13px;opacity:.8;max-width:850px}
+.spec-workshop-content{padding:16px 22px;overflow:auto}.spec-workshop-summary{display:flex;gap:15px;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px;padding:12px;border-radius:9px;background:#47556926;font-size:13px}
+.spec-workshop-columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}.spec-workshop-columns section{min-width:0}.spec-workshop-columns h3{font-size:15px;margin:10px 0}.spec-workshop-hint{opacity:.7;font-size:12px;line-height:1.65;white-space:pre-wrap}
+.spec-workshop-actions{display:flex;gap:9px;margin:10px 0}.spec-workshop-label{display:block;font-size:13px;line-height:1.6;margin:10px 0}
+.spec-workshop-label textarea,.spec-workshop-label input{display:block;width:100%;background:#0b1220;color:#f1f5f9;border:1px solid #64748b75;border-radius:7px;padding:10px;margin-top:5px;font-size:12px;box-sizing:border-box}
+.spec-workshop-label textarea{font-family:ui-monospace,monospace;resize:vertical;min-height:170px}
+.spec-workshop-dialog details{margin:10px 0;border:1px solid #64748b55;border-radius:8px;padding:10px;font-size:12px}.spec-workshop-dialog pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;font-size:11px}
+.spec-workshop-map{display:block;border-bottom:1px solid #64748b35;padding:9px 0;font-size:12px}.spec-workshop-map strong{display:block;margin-bottom:5px}.spec-workshop-map select{max-width:100%;color:inherit;background:#1e293b;border:1px solid #64748b;border-radius:6px;padding:6px}
+.spec-workshop-review{display:flex;align-items:flex-start;gap:8px;font-size:12px;margin:14px 0}.spec-workshop-review input{margin-top:3px}.spec-workshop-previous{font-size:12px;margin-top:14px}.spec-workshop-previous>div{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+#specWorkshopError{white-space:pre-wrap;color:#fca5a5;font-size:12px;margin:10px 0}
+@media(max-width:790px){.spec-workshop-columns{grid-template-columns:1fr}.spec-workshop-dialog{max-height:98vh;width:99vw}.spec-workshop-content{padding:12px}}
+
+/* 1.4: human-readable design review; no editor, execution, or automated approval. */
+.design-review{border:1px solid #50799a78;border-radius:11px;padding:12px;margin:13px 0;background:linear-gradient(140deg,#1e354b77,#0c142466)}
+.design-review h3{margin:8px 0 6px;font-size:14px}
+.design-review-content{font-size:12px;line-height:1.65;white-space:normal;color:#d7e5f4}
+.design-review-card{padding:10px;margin:7px 0;border:1px solid #64748b50;border-radius:9px;background:#111f30b0}
+.design-review-card strong{display:block;margin-bottom:5px;font-size:13px}
+.design-review-hint{font-size:12px;opacity:.82;line-height:1.6}
+.design-review-tag{font-size:11px;display:inline-block;padding:2px 7px;margin:2px 4px 2px 0;border:1px solid #6c86a688;border-radius:6px;color:#c9e0ff}
+.design-review-warn{border-left:3px solid #d9a85b;padding:6px 10px;margin:7px 0;background:#d9a85b10}
+.design-review-controls{display:flex;gap:9px;align-items:end;flex-wrap:wrap;margin:10px 0}
+.design-review-controls label{font-size:12px;min-width:110px;flex:1}
+.design-review-controls select{display:block;width:100%;margin-top:3px;color:#e2e8f0;background:#17273c;border:1px solid #64748b;border-radius:6px;padding:6px}
+.design-review-stat{padding:8px;border-radius:7px;background:#50799a32;margin:7px 0}
+/* Axiom 1.5 — task-centered software production. Existing professional panels remain accessible. */
+.pilot-home{border:1px solid var(--border,#2a3840);border-radius:15px;padding:22px;margin:20px 0;background:var(--surface,#101d24)}
+.pilot-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.pilot-head h2{font-size:23px;line-height:1.35;margin:6px 0 8px}
+.pilot-head p{font-size:13px;line-height:1.7;color:var(--muted,#97a6b0);max-width:780px}
+.pilot-select{display:flex;gap:10px;align-items:center;margin:18px 0}
+.pilot-select label{font-size:13px;white-space:nowrap}
+.pilot-select select{min-width:220px;max-width:420px;flex:1;background:#18242a;color:#e6eeef;border:1px solid #45545a;padding:10px;border-radius:9px}
+.pilot-empty{padding:22px;color:#b3c2c9;border:1px dashed #45545a;border-radius:11px}
+.pilot-summary{padding:12px 14px;border-radius:10px;background:rgba(95,125,130,.09)}
+.pilot-summary strong{font-size:14px;display:block}
+.pilot-summary p{font-size:12px;color:#a0b4bf;margin:6px 0 0}
+.pilot-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.pilot-step{border:1px solid #3b4b53;border-radius:10px;padding:10px;display:flex;gap:10px;min-height:75px;align-items:flex-start}
+.pilot-num{border-radius:6px;background:#314047;padding:5px;font-size:11px;color:#c8d9df}
+.pilot-step b{display:block;font-size:13px}
+.pilot-step small{display:block;color:#99a9b2;line-height:1.4;font-size:11px;margin-top:6px}
+.pilot-step.complete{border-color:#39826c;background:rgba(42,137,103,.08)}
+.pilot-step.blocked{border-color:#a6724d}
+.pilot-step.running{border-color:#678fb1}
+.pilot-next{padding:18px;border:1px solid #627c84;border-radius:10px;background:rgba(67,108,122,.10)}
+.pilot-next>small{color:#93bcc7}.pilot-next h3{margin:5px 0 8px;font-size:20px}.pilot-next p{color:#c1d0d5;font-size:13px}
+.pilot-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.pilot-warning{color:#99aab2;font-size:11px;line-height:1.6;margin:12px 0 0}
+@media(max-width:760px){.pilot-head{flex-direction:column}.pilot-select{flex-wrap:wrap}.pilot-select select{min-width:100%;}.pilot-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Axiom 1.6 production lane: human-first, source-backed next action */
+.assembly-home{margin:20px 0;padding:24px;border:1px solid var(--border,#404651);border-radius:14px;background:var(--surface,#202632)}
+.assembly-heading{display:flex;gap:16px;justify-content:space-between;align-items:flex-start}
+.assembly-heading h2{font-size:22px;margin:5px 0 7px}.assembly-heading p,.assembly-muted{color:var(--muted,#aeb6c5);font-size:13px;line-height:1.6}
+.assembly-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}.assembly-controls select{min-width:260px;max-width:420px;flex:1}
+.assembly-body{border:1px solid var(--border,#404651);border-radius:10px;padding:16px}
+.assembly-stages{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.assembly-stage{padding:7px 9px;border:1px solid var(--border,#404651);border-radius:7px;color:var(--muted,#aeb6c5);font-size:12px}.assembly-stage.current{color:#fff;border-color:#5c91e5}
+.assembly-next{border-top:1px solid var(--border,#404651);padding-top:14px}.assembly-next h3{margin:5px 0 8px}.assembly-next small{color:#9cbdf5}
+.assembly-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.assembly-error{color:#f1a8a8}.assembly-paste,.assembly-review{margin-top:14px;padding:12px;border:1px solid var(--border,#404651);border-radius:8px}
+.assembly-paste label,.assembly-review label{display:grid;gap:7px}.assembly-paste textarea{width:100%;min-height:150px;font-family:monospace}.assembly-review pre,.assembly-diagnostic pre{max-height:340px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.assembly-review input{max-width:420px}.assembly-review button,.assembly-paste button{margin-top:10px}
+/* 1.7 multi-module task graph */
+.graph-home{border:1px solid var(--border,#3a4352);border-radius:12px;padding:20px;margin:18px 0;background:var(--panel,#151a24)}
+.graph-body{margin-top:18px}.graph-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.graph-module{border:1px solid var(--border,#45505e);background:var(--card,#1c2531);border-radius:9px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px}
+.graph-module strong{overflow-wrap:anywhere}.graph-module p{margin:4px 0 0;font-size:12px}.graph-module .tool{margin-top:4px}
+
+/* 1.8 parallel, read-only construction packets */
+.fleet-section{margin-top:24px;padding:16px;border:1px solid var(--border,#45505e);border-radius:12px}.fleet-section h3{margin:0 0 10px}.fleet-packet{border-top:1px solid var(--border,#45505e);padding:13px 0}.fleet-packet h4{margin:4px 0}.fleet-packet details{margin:9px 0}.fleet-text{display:block;box-sizing:border-box;width:100%;max-width:100%;min-height:96px;margin:9px 0;padding:11px;background:var(--card,#19212a);color:var(--text,#e5e5e5);border:1px solid var(--border,#45505e);border-radius:8px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;white-space:pre;resize:vertical}.fleet-packet .assembly-actions{display:flex;gap:9px;flex-wrap:wrap}

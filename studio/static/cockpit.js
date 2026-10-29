@@ -48,7 +48,7 @@
   async function doctor(){
     try{const d=await call('/api/doctor');
       const comp=Object.entries(d.compilers).map(([k,v])=>k+': '+(v?'已找到':'未找到')).join('\n');
-      alert('Axiom Studio '+d.version+'\nPython '+d.python+'\n模型引擎：'+(d.model_engine_present?'已检测':'缺失')+'\n'+comp+'\n生产发布授权：禁用\n原生代码沙箱保证：未建立');
+      alert('Axiom Studio '+(d.studio_version||d.version)+'\nPython '+d.python+'\n模型引擎：'+(d.model_engine_present?'已检测':'缺失')+'\n'+comp+'\n生产发布授权：禁用\n原生代码沙箱保证：未建立');
     }catch(e){alert('环境诊断失败：'+e.message)}
   }
   document.addEventListener('DOMContentLoaded',()=>{

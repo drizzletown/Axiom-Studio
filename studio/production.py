@@ -69,7 +69,7 @@ class Production:
                     for i,v in enumerate(ir['properties'])],
                 'warning':'这里只验证性质标识及当前 Axiom 模型；自然语言需求与性质的语义等价须人工确认。'}
 
-    def freeze(self,pid,requirements,expected_baseline=None):
+    def freeze(self,pid,requirements,expected_baseline=None,source_plan_digest=None):
         if not isinstance(requirements,list) or not (1<=len(requirements)<=100):
             raise FlowError('需给出 1–100 项明确需求')
         with self.flow.lock,self.flow._connect() as cx:
@@ -102,6 +102,7 @@ class Production:
                 normalized.append({'id':rid,'text':statement.strip(),'kind':kind,'binding':bound})
             body={'schema':SCHEMA,'project_id':pid,'project_revision':p['revision'],
                   'baseline':baseline,'model_digest':_sha(ir),'requirements':normalized,
+                  'human_review_source':source_plan_digest,
                   'assurance_policy':{'issue':'cpp-tested-prototype only','production_release':False,
                       'all_requirements_must_be_model_bound':True,'human_decision_required':True,
                       'live_cpp_gate_required':True},
@@ -111,7 +112,8 @@ class Production:
                  (pid,canonical(body).decode('utf-8'),body_digest,time.time()))
             self.flow._event(cx,pid,'production_contract_frozen',
                  {'contract_digest':body_digest,'requirement_ids':[v['id'] for v in normalized],
-                  'unverified_count':sum(v['kind']=='unverified' for v in normalized)})
+                  'unverified_count':sum(v['kind']=='unverified' for v in normalized),
+                  'human_review_source':source_plan_digest})
             return {'body':body,'digest':body_digest}
 
     def _assess(self,p,record,ir,audit):

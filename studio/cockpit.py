@@ -91,7 +91,7 @@ class Cockpit:
 
     def doctor(self):
         s=self.studio
-        info={'schema':'ax-studio-doctor/1.0','version':'1.0.0',
+        info={'schema':'ax-studio-doctor/1.0','version':'1.0.0','studio_version':'1.5.0',
               'python':sys.version.split()[0],
               'compilers':{'g++':shutil.which('g++'),'clang++':shutil.which('clang++')},
               'evidence_path':str(s.flow.evidence_root) if hasattr(s.flow,'evidence_root') else 'managed',

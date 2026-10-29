@@ -1,8 +1,8 @@
 {
   "schema": "ax-studio-release/1.0",
   "product": "Axiom Studio",
-  "version": "1.0.0",
-  "released_on": "2026-10-28",
+  "version": "2.0.0",
+  "released_on": "2026-10-29",
   "distribution": "local-source-release",
   "product_position": "AI-oriented software construction and trustworthy evolution orchestration; reuse VS Code",
   "engine": "bundled original Axiom P0-P2h",
@@ -11,7 +11,9 @@
   "scope": "trusted local prototype software-construction workflow, test-only Gates",
   "test_commands": [
     "python scripts/release_selftest.py",
-    "python -m pytest -q studio/tests/test_cockpit_release.py",
+    "python -m pytest -q studio/tests/test_milestone20.py",
     "python scripts/verify_distribution.py"
-  ]
+  ],
+  "release_focus": "Trust-bound cross-version executable incremental verification, authoritative Axiom P2h cache reuse, always rerun integration test, project-wide Gate, human-controlled release campaign and evidence handoff",
+  "notes": "No production-grade untrusted code sandbox; historical combined regression intermittently times out. Source-bound local test assurance only."
 }

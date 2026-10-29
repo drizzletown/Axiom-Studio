@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio · Trustworthy Software Construction</title><link rel="stylesheet" href="/styles.css"></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Axiom Studio 1.8 · 从目标到可信软件</title><link rel="stylesheet" href="/styles.css"></head>
 <body>
 <div class="studio">
   <header class="titlebar">
-    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">PRODUCTION · 0.8</span></div>
+    <div class="brand"><span class="brand-logo">⟠</span><b>Axiom<span> Studio</span></b><span class="brand-version">STUDIO 1.8</span></div>
     <nav class="topnav"><button class="navitem" id="navProjects">项目全景</button><button class="navitem" id="navFile">文件</button><button class="navitem" id="navView">视图</button><button class="navitem" id="navVerify">验证</button></nav>
     <div class="title-center"><span class="tiny-circle"></span><span id="workspace-title">AXIOM / WORKSPACE</span><span class="title-chevron">⌄</span></div>
     <div class="title-actions"><button title="搜索文件 Ctrl+P" id="quickOpen" class="title-icon">⌕</button><button title="保存 Ctrl+S" id="topSave" class="title-icon">▣</button><button title="帮助" id="helpButton" class="title-icon">ⓘ</button><div class="avatar">A</div></div>
@@ -21,16 +21,12 @@
     <aside class="sidebar">
       <div class="sidebar-title"><span id="sidebar-label">构造工作台</span><div><button class="icon-only" id="newFile" title="新建文件 Ctrl+N">＋</button><button class="icon-only" id="refreshTree" title="刷新">↻</button></div></div>
       <section class="sidebar-section" id="projectView"><div class="section-row"><b>可信构造流程</b></div>
-        <div class="project-sidebar-intro">以需求和规格为起点，编排 AI 构造、独立验证、质量裁决和持续演化。</div>
-        <button id="projectSidebarCreate" class="project-sidebar-nav primary">＋ 创建软件构造项目</button>
+        <div class="project-sidebar-intro"><strong>告诉 Axiom 想做什么</strong><br>AI 帮你构造，独立工具帮你验证。<br>你掌握验收标准和最终决定。</div>
+        <button id="journeySideStart" class="project-sidebar-nav primary">＋ 从软件目标开始</button><button id="projectSidebarCreate" class="project-sidebar-nav">关联已有规格工程</button>
         <button id="projectSidebarOverview" class="project-sidebar-nav">◈ 查看工程全景</button>
         <div class="side-divider"></div>
-        <div class="section-row"><b>构造流程</b></div>
-        <div class="project-sidebar-step"><b>01</b> 需求与行为规格</div>
-        <div class="project-sidebar-step"><b>02</b> 验证义务与规格 Gate</div>
-        <div class="project-sidebar-step"><b>03</b> AI 构造候选 / 人工审查</div>
-        <div class="project-sidebar-step"><b>04</b> 独立检查与可信证据</div>
-        <div class="project-sidebar-step"><b>05</b> 人工裁决 / 演化分支</div>
+        <div class="section-row"><b>新软件开发方式</b></div>
+        <div class="project-sidebar-step"><b>①</b> 说出目标</div><div class="project-sidebar-step"><b>②</b> 明确规则</div><div class="project-sidebar-step"><b>③</b> 让 AI 构造</div><div class="project-sidebar-step"><b>④</b> 独立验证</div><div class="project-sidebar-step"><b>⑤</b> 做出决策并演化</div>
         <div class="side-divider"></div><p class="side-note">第三方编辑、Git 与调试：<b>VS Code</b>。这里不复制编辑器功能。</p>
       </section><section class="sidebar-section hidden" id="explorerView"><div class="section-row"><span class="caret">⌄</span><b>AXIOM WORKSPACE</b><span class="small-right" id="fileCount"></span></div><div class="filter-wrap"><span>⌕</span><input id="fileFilter" placeholder="筛选文件..." spellcheck="false"/></div><div id="fileTree" class="file-tree"></div></section>
       <section class="sidebar-section hidden" id="verifyView"><div class="section-row"><span class="caret">⌄</span><b>验证流水线</b></div><div class="pipeline">
@@ -64,10 +60,60 @@
       <div class="centerbody">
         <section class="editor-area" id="editorArea">
           <section id="projectDashboard" class="project-dashboard">
-            <div class="project-intro"><div class="project-kicker">AXIOM STUDIO / SOFTWARE CONSTRUCTION SYSTEM</div>
-              <div class="project-title-line"><div><h1>软件构造全景</h1><p>用行为规格约束 AI 构造，用独立证据支撑裁决，并让演化过程持续可追溯。</p></div><button class="tool primary" id="projectNew">＋ 关联现有工程</button></div></div>
+            <div class="project-intro"><div class="project-kicker">AXIOM STUDIO · TRUSTWORTHY SOFTWARE CONSTRUCTION</div>
+              <div class="project-title-line"><div><h1>软件生产工作台</h1><p>从软件目标出发，构造方案，独立验证，持续改进。</p></div><button class="tool primary" id="projectNew">关联已有规格工程</button></div></div>
+            <section class="journey" aria-label="从开发意图开始">
+              <div class="journey-hero">
+                <div class="journey-copy"><span class="journey-eyebrow">AXIOM STUDIO · 软件生产新方式</span>
+                  <h2>你说出软件目标。<br><em>让构造与验证各司其职。</em></h2>
+                  <p>先明确“软件必须做对什么”，再组织 AI 形成实现，最后用独立证据判断能否接受。开始不需要写代码，也不需要学习 Axiom 术语。</p>
+                  <div class="journey-pillbar"><span>你决定目标</span><span>AI 提供方案</span><span>证据支持判断</span></div>
+                </div>
+                <form id="journeyStartForm" class="journey-start-form" novalidate>
+                  <label for="journeyName">项目叫什么？</label><input id="journeyName" name="name" maxlength="100" required placeholder="例如：智能库存管理" value="我的第一个可信软件" />
+                  <label for="journeyGoal">你希望软件完成什么？</label><textarea id="journeyGoal" name="goal" rows="3" maxlength="2000" required placeholder="例如：管理库存进出，不允许库存为负，记录每笔变化。"></textarea>
+                  <label for="journeyScenario">用哪个小案例开始了解构造过程？</label>
+                  <select id="journeyScenario" name="scenario">
+                    <option value="model-toggle">最简单：开关状态，先体验行为验证</option>
+                    <option value="model-ledger">账户守恒：学习规则与反例</option>
+                    <option value="cpp-ledger">真实 C++ 工程：体验完整构造链</option>
+                  </select>
+                  <div class="journey-example" id="journeyExample">示例仅提供可检查的起点，不会自动证明你输入的全部目标。</div>
+                  <button class="journey-create" id="journeyCreate" type="submit">建立我的软件构造项目 <span>→</span></button>
+                  <div class="journey-subactions"><button id="journeyFillExample" type="button">先填一个示例</button><button id="journeyExisting" type="button">我已有工程</button></div>
+                  <div class="journey-error" id="journeyError" role="alert" aria-live="polite"></div>
+                </form>
+              </div>
+              <div class="journey-labelrow"><div><h3>软件生产的五个问题</h3><p>点击每一步，理解谁来做、产出什么、什么情况下可以继续。</p></div><button id="journeyRefresh" class="tool secondary">刷新状态</button></div>
+              <div id="journeyParadigm" class="journey-paradigm"></div>
+              <div id="journeyExplain" class="journey-explain" aria-live="polite"></div>
+              <div class="journey-labelrow"><div><h3>我的软件项目</h3><p>每个项目只突出当前最应该做的一件事。</p></div></div>
+              <div id="journeyProjects" class="journey-projects" aria-live="polite">正在读取项目…</div>
+              <p class="journey-scope">重要边界：自然语言描述只是设计意图。示例规格的通过不代表已证明你的全部目标；AI 代码须经人工审查与独立验证，测试级结果也不构成生产发布许可。</p>
+            </section>
+            <section class="pilot-home" id="pilotHome" aria-label="软件生产导航">
+              <div class="pilot-head"><div><span class="journey-eyebrow">AXIOM 1.5 / SOFTWARE PRODUCTION PILOT</span><h2>把目标变成可信的生产过程</h2><p>不必理解内部命令。选一个项目，系统告诉你目前有什么证据、缺少什么，以及下一步由谁完成。</p></div><div class="pilot-head-btns"><button type="button" class="tool secondary" id="pilotRefresh">刷新项目</button></div></div>
+              <div class="pilot-select"><label for="pilotProject">正在推进的软件</label><select id="pilotProject" aria-label="选择软件项目"></select><button type="button" class="tool primary" id="pilotBegin">开始生产导航</button></div>
+              <div id="pilotContent" aria-live="polite" class="pilot-empty">选择已有项目并开始，或使用上方“从软件目标开始”创建项目。</div>
+            </section>
+            <section class="graph-home" id="milestone20Home" aria-label="2.0 可信交付验证中心">
+              <div class="assembly-heading"><div><span class="journey-eyebrow">AXIOM STUDIO 2.0 / MILESTONE RELEASE</span><h2>可信交付验证中心</h2><p>看清哪些工程内容发生变化、哪些测试需要重新执行。系统调用真实 Axiom 验证工具，不会自行把复用建议当作已通过证据。</p></div><button class="tool secondary" type="button" id="m20Refresh">刷新</button></div>
+              <div class="assembly-controls"><label for="m20Project">要验证的软件项目</label><select id="m20Project"></select><button class="tool primary" type="button" id="m20Create">创建验证批次</button></div>
+              <div class="graph-body" id="m20Body" aria-live="polite">先完成规格验收冻结，再创建一次版本绑定的验证批次。每次实际执行 C++ 前均须单独确认信任。</div>
+            </section>
+            <section class="graph-home" id="taskGraphHome" aria-label="跨模块软件生产计划">
+              <div class="assembly-heading"><div><span class="journey-eyebrow">AXIOM STUDIO 1.9 · MULTI-AGENT PRODUCTION</span><h2>从软件目标，组织构造 Agent、复核 Agent 与独立验证</h2><p>系统准备独立任务包，AI 可以生成候选与建议性复核；用户审查后交给独立验证工具。</p></div><button type="button" class="tool secondary" id="taskGraphRefresh">刷新</button></div>
+              <div class="assembly-controls"><label for="taskGraphProject">选择已有软件项目</label><select id="taskGraphProject"></select><button class="tool primary" type="button" id="taskGraphCreate">创建跨模块生产计划</button></div>
+              <div class="graph-body" id="taskGraphBody" aria-live="polite">确认验收规则后，系统扫描可构造模块，创建生产任务图并给出下一步。</div>
+            </section>
+            <section class="assembly-home" id="assemblyHome" aria-label="AI 构造生产线">
+              <div class="assembly-heading"><div><span class="journey-eyebrow">AXIOM STUDIO 1.6 · AI PRODUCTION LANE</span><h2>把软件方案交给 AI 构造，始终掌握验收权</h2><p>确认规则后，系统接管候选和验证记录；需要人审查、应用、运行时才请求你授权。</p></div><button type="button" class="tool secondary" id="assemblyRefresh">刷新</button></div>
+              <div class="assembly-controls"><label for="assemblyProject">要构造的软件</label><select id="assemblyProject" aria-label="构造目标项目"></select><label for="assemblyTarget">本次实现模块</label><select id="assemblyTarget" aria-label="构造的实现模块"></select><button type="button" class="tool primary" id="assemblyStart">开始 AI 构造</button></div>
+              <div id="assemblyBody" aria-live="polite" class="assembly-body">请先完成软件规则的检查与人工确认；有 C++ 工程时，即可启动 AI 构造生产线。</div>
+            </section>
+            <details class="journey-advanced" id="journeyAdvanced"><summary>专业工具与完整项目记录 <span>需要时展开</span></summary><div class="journey-advanced-body">
             <section class="cockpit" aria-label="Axiom 1.0 软件生产总控台">
-              <div class="cockpit-heading"><div><div class="project-kicker">AXIOM STUDIO 1.0 / PRODUCTION COCKPIT</div><h2>今日软件生产总控台</h2><p>统一查看规格、构造、独立验证、人工裁决与演化状态。这里只编排流程，不代替编译器或编辑器。</p></div><div class="launch-head-actions"><button id="cockpitRefresh" class="tool secondary">更新项目状态</button><button id="cockpitDoctor" class="tool secondary">环境诊断</button></div></div>
+              <div class="cockpit-heading"><div><div class="project-kicker">AXIOM STUDIO / 专业总控台</div><h2>今日软件生产总控台</h2><p>统一查看规格、构造、独立验证、人工裁决与演化状态。这里只编排流程，不代替编译器或编辑器。</p></div><div class="launch-head-actions"><button id="cockpitRefresh" class="tool secondary">更新项目状态</button><button id="cockpitDoctor" class="tool secondary">环境诊断</button></div></div>
               <div id="cockpitSummary" class="cockpit-metrics" aria-live="polite">正在核对项目状态…</div>
               <div class="cockpit-layout"><div><h3>生产流程与证据</h3><div id="cockpitProjects" class="cockpit-projects"></div></div><div><h3>下一步行动</h3><div id="cockpitActions" class="cockpit-actions"></div><p class="project-assurance">人工批准、独立验证和 Gate 不得跳过；测试级结论不构成正式软件发布授权。</p></div></div>
             </section>
@@ -80,6 +126,7 @@
             <div class="project-columns"><div class="project-panel"><div class="project-panel-head">工程与演化分支 <button id="projectRefresh" class="tool secondary">刷新</button></div><div id="projectList" class="project-list"></div></div>
             <div class="project-panel project-detail"><div class="project-panel-head">构造链与可信证据 <span id="projectStatusLabel">未选择项目</span></div><div id="projectDetail" class="project-empty">创建项目并验证行为规格，从这里开始新的软件构造过程。</div></div></div>
             <div class="project-bottom-note">AXIOM TRUST BOUNDARY · 测试级准入 ≠ 形式化证明 ≠ 生产发布。代码编辑与调试交由 VS Code 等现有工具。</div>
+            </div></details>
           </section>
           <div id="welcome" class="welcome hidden">
             <div class="hero-watermark">⟠</div>
@@ -149,11 +196,63 @@
     </section></div>
   </div>
 </div>
+<div id="journeyReviewOverlay" class="modal-overlay hidden"><div class="project-create-dialog journey-review-dialog intent-dialog" role="dialog" aria-modal="true" aria-labelledby="journeyReviewTitle">
+<header><div><div class="project-kicker">AXIOM / 目标 → 行为 → 可验证规则</div><h2 id="journeyReviewTitle">让软件目标变成可以验收的行为</h2><p>不用写代码。说清楚“什么情况下、发生什么、应该出现什么”，再由你判断是否有对应的行为规则。</p></div><button id="journeyReviewClose" class="icon-only" type="button" aria-label="关闭">×</button></header>
+<div class="intent-goal"><small>你最初提出的目标</small><strong id="journeyReviewGoal"></strong></div>
+<div id="journeyCoverage" class="intent-coverage" aria-live="polite"></div>
+<div id="journeyGapWarning" class="intent-warning" role="status"></div>
+<div id="journeyReviewItems" class="journey-review-items"></div>
+<button id="journeyReviewAdd" type="button" class="tool secondary">＋ 添加一项业务行为或例外情况</button>
+<div class="intent-help"><strong>怎样判断？</strong>关联一条规格性质，只表示你认为它与验收场景相关。若找不到适合的规则，请保留“暂无对应规则”，系统将明确显示缺口，不会假装已经通过验证。</div>
+<textarea id="journeyDesignText" class="hidden intent-task" rows="7" readonly aria-label="给 AI 或 VS Code 的规格设计任务，可复制"></textarea>
+<div class="intent-controls"><button id="journeySpecWorkshopOpen" class="tool primary" type="button">让 AI 帮我提出行为规则</button><button id="journeyReviewDesign" class="tool secondary" type="button">生成给 AI 的规格设计任务</button><button id="journeyReviewSave" class="tool secondary" type="button">保存场景草稿</button></div>
+<label class="journey-review-confirm"><input id="journeyReviewChecked" type="checkbox"/> 我已逐项审查前提、动作、结果及规则关联，理解关联不等于已证明全部需求。</label>
+<div class="project-form-actions"><button id="journeyReviewCancel" class="tool secondary" type="button">返回项目</button><button id="journeyReviewSubmit" class="tool primary" type="button" disabled>确认并冻结验收契约</button></div>
+<p id="journeyReviewError" role="alert" aria-live="polite" class="journey-error"></p></div></div>
+<div id="specWorkshopOverlay" class="modal-overlay hidden"><div class="spec-workshop-dialog" role="dialog" aria-modal="true" aria-labelledby="specWorkshopTitle">
+<header><div><div class="project-kicker">AXIOM STUDIO / 软件意图 → 规格候选 → 独立检验 → 演化</div><h2 id="specWorkshopTitle">让 AI 提议规则，由你决定采用</h2><p>AI 的任务是提出行为规则，不是证明你的目标已经实现。系统会独立检查候选，并保留原有规格。</p></div><button id="specWorkshopClose" class="icon-only" aria-label="关闭">×</button></header>
+<div class="spec-workshop-content">
+<div class="spec-workshop-summary"><strong id="specWorkshopGoal">软件目标</strong><span id="specWorkshopStatus">尚未提出候选</span></div>
+<div class="spec-workshop-columns"><section>
+<h3>第一步 · 准备候选</h3><p class="spec-workshop-hint">可以复制任务给 VS Code / AI；已配置模型时，明确授权后可直接生成；也可以手动粘贴完整 .ax 规格。</p>
+<div class="spec-workshop-actions"><button class="tool secondary" id="specWorkshopCopyTask">复制 AI 设计任务</button><button class="tool secondary" id="specWorkshopGenerate">连接 AI 生成</button></div>
+<label class="spec-workshop-label">候选行为规格<textarea id="specWorkshopSource" rows="13" spellcheck="false" placeholder="粘贴 AI 提出的完整 .ax 规格。不会直接修改工程。"></textarea></label>
+<label class="spec-workshop-label">为什么需要这些规则<input id="specWorkshopNotes" placeholder="例如：补充余额不足时的边界行为"></label>
+<button class="tool primary" id="specWorkshopCreate">暂存为待审查候选</button>
+<div class="spec-workshop-previous"><strong>此前候选</strong><div id="specWorkshopList"></div></div>
+</section><section><h3>第二步 · 看见差异与证据</h3><div class="spec-workshop-hint" id="specWorkshopEvidence">选择候选后才能检查。独立模型通过仅说明候选模型符合被检查的性质。</div>
+<div class="spec-workshop-actions"><button id="specWorkshopCheck" class="tool primary" disabled>独立检查候选规则</button></div>
+<div class="design-review" id="designReviewPanel" aria-live="polite">
+  <h3>不用读代码，也能看懂候选改变了什么</h3>
+  <p class="spec-workshop-hint">只解释模型结构及已记录的验证结论。需求是否真正得到满足，仍由你确认。</p>
+  <div id="designReviewExplanation" class="design-review-content">先独立检查候选，才能查看模型结构变化、风险提示和验收缺口。</div>
+  <h3>比较两种方案</h3>
+  <div class="design-review-controls">
+    <label>方案 A<select id="designReviewA" aria-label="方案 A"></select></label>
+    <label>方案 B<select id="designReviewB" aria-label="方案 B"></select></label>
+    <button class="tool secondary" id="designReviewCompare" disabled>对比两份方案</button>
+  </div>
+  <div id="designReviewComparison" class="design-review-content" aria-live="polite">至少检查两份候选后，即可比较它们的规则变化和未解决的需求。</div>
+</div>
+<details><summary>查看规格文本差异</summary><pre id="specWorkshopDiff"></pre></details>
+<h3>第三步 · 逐项确认覆盖关系</h3><p class="spec-workshop-hint">任何性质与用户场景的关联都必须由你选择。找不到对应性质时保留缺口。</p>
+<div id="specWorkshopMappings" class="spec-workshop-mappings"></div>
+<label class="spec-workshop-review"><input type="checkbox" id="specWorkshopApproved"> 我已审阅规则和每项场景的关联；理解模型检查不是业务正确性证明。</label>
+<button class="tool primary" id="specWorkshopPromote" disabled>批准并创建演化项目</button><div id="specWorkshopError" role="alert"></div>
+</section></div></div>
+</div></div>
 <div id="toast" role="status"></div>
 <script src="/candidates.js" defer></script>
 <script src="/workorders.js" defer></script>
 <script src="/projects.js" defer></script>
 <script src="/launchpad.js" defer></script>
 <script src="/cockpit.js" defer></script>
+<script src="/pilot.js" defer></script>
+<script src="/assembly.js" defer></script>
+<script src="/task_graph.js" defer></script>
+<script src="/milestone20.js" defer></script>
+<script src="/journey.js" defer></script>
+<script src="/spec_workshop.js" defer></script>
+<script src="/design_review.js" defer></script>
 <script src="/app.js" defer></script>
 </body></html>
